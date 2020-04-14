@@ -32,18 +32,18 @@ class ArtworksController < ApplicationController
       redirect_to edit_artwork_path
     end
   end
-# This destroy action is going to be called in collector's show page. 
-# use cookies to determine if collector owns artwork 
+# This destroy action is going to be called in user's show page. 
+# use cookies to determine if user owns artwork 
   def destroy
-    collector = @artwork.collector
+    user = @artwork.user
     @artwork.delete(artwork_params)
-    redirect_to collector_path(collector)
+    redirect_to user_path(user)
   end
 
   private
   
   def artwork_params
-    params.require(:artwork).permit(:title, :img_url, :price, :for_sale, :artist_id, :object_type_id, :collector_id)
+    params.require(:artwork).permit(:title, :img_url, :price, :for_sale, :artist_id, :object_type_id, :user_id)
   end
 
   def find_artwork

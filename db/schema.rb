@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_14_001248) do
+ActiveRecord::Schema.define(version: 2020_04_14_145739) do
 
   create_table "artists", force: :cascade do |t|
     t.string "name"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2020_04_14_001248) do
   end
 
   create_table "artworks", force: :cascade do |t|
-    t.integer "collector_id", null: false
+    t.integer "user_id", null: false
     t.integer "object_type_id", null: false
     t.integer "artist_id", null: false
     t.string "title"
@@ -30,18 +30,8 @@ ActiveRecord::Schema.define(version: 2020_04_14_001248) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["artist_id"], name: "index_artworks_on_artist_id"
-    t.index ["collector_id"], name: "index_artworks_on_collector_id"
     t.index ["object_type_id"], name: "index_artworks_on_object_type_id"
-  end
-
-  create_table "collectors", force: :cascade do |t|
-    t.string "name"
-    t.string "location"
-    t.string "email"
-    t.string "img_url"
-    t.string "bio"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_artworks_on_user_id"
   end
 
   create_table "object_types", force: :cascade do |t|
@@ -51,7 +41,17 @@ ActiveRecord::Schema.define(version: 2020_04_14_001248) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+    t.string "email"
+    t.string "img_url"
+    t.string "bio"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   add_foreign_key "artworks", "artists"
-  add_foreign_key "artworks", "collectors"
   add_foreign_key "artworks", "object_types"
+  add_foreign_key "artworks", "users"
 end

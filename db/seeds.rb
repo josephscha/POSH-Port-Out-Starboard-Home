@@ -9,13 +9,13 @@
 Artist.destroy_all
 Artwork.destroy_all
 ObjectType.destroy_all
-Collector.destroy_all
+User.destroy_all
 
 require 'byebug'
 require 'rest-client'
 require 'json'
 
-Collector.create(name: "greg")
+User.create(name: "greg")
 
 objects_array = [437133]
 
@@ -48,7 +48,7 @@ cats_obj_arr.each do |object|
         img_url: parsed_url["primaryImage"],
         artist: artist,
         price: rand(25000..10000000),
-        collector: Collector.all.sample,
+        user: User.all.sample,
         object_type: find_object(parsed_url["objectName"])
     )
 
