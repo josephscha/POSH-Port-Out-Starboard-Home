@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  collector: one
+  object: one
+  artist: one
+  title: MyString
+  img_url: MyString
+  price: 1.5
+  for_sale: false
+
+two:
+  collector: two
+  object: two
+  artist: two
+  title: MyString
+  img_url: MyString
+  price: 1.5
+  for_sale: false
