@@ -5,7 +5,7 @@
       <% @forsale_artwork.each do |artwork| %>
          <h2><%= link_to artwork.title, artwork %></h2> <br>
          <img src="<%= artwork.img_url %>" style='height:500px; width:auto;'> <br>
-         <p>Type:<%= artwork.object_type.name %></p> <br>
+         <p>Type: <%= artwork.object_type.name %></p> <br>
          <p>Artist: <%= link_to artwork.artist.name, artwork.artist %> </p> <br>
          <p>Owned by: <%= artwork.user.name %></p> <br>
          <p> Price: <%= number_to_currency(artwork.price) %></p> <br>
