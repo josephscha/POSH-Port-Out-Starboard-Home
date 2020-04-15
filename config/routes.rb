@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :likes
   # resources :sessions
   resources :artists, only: [:create, :show, :index]
   resources :object_types, only: [:create, :show, :index]

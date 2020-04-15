@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_15_152039) do
+ActiveRecord::Schema.define(version: 2020_04_15_213607) do
 
   create_table "artists", force: :cascade do |t|
     t.string "name"
@@ -32,6 +32,15 @@ ActiveRecord::Schema.define(version: 2020_04_15_152039) do
     t.index ["artist_id"], name: "index_artworks_on_artist_id"
     t.index ["object_type_id"], name: "index_artworks_on_object_type_id"
     t.index ["user_id"], name: "index_artworks_on_user_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "artwork_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["artwork_id"], name: "index_likes_on_artwork_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "object_types", force: :cascade do |t|
@@ -60,4 +69,6 @@ ActiveRecord::Schema.define(version: 2020_04_15_152039) do
   add_foreign_key "artworks", "artists"
   add_foreign_key "artworks", "object_types"
   add_foreign_key "artworks", "users"
+  add_foreign_key "likes", "artworks"
+  add_foreign_key "likes", "users"
 end
