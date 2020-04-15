@@ -8,6 +8,7 @@ class ArtistsController < ApplicationController
     end
 
     def create 
+        
         @artist = Artist.create(artist_params)
         if @artist.valid?
             redirect_to @artist

@@ -1,0 +1,9 @@
+<%= button_to "Back to Artists", artists_path, method: :get%>
+<h1> <%= @artist.name %> </h1>
+
+<% @artist.artworks.each do |a| %>
+<%= link_to a.title, a %><br>
+<hr>
+<%= image_tag a.img_url, style: 'height:500px; width:auto' %><br><br>
+
+<% end %>

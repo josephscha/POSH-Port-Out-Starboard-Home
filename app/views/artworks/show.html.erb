@@ -1,0 +1,11 @@
+<%= button_to "Back to Artworks", artworks_path, method: :get%>
+<h1> <%= @artwork.title %> </h1>
+
+Artist: <%= link_to @artwork.artist.name, @artwork.artist %>
+<hr>
+<%= image_tag @artwork.img_url, style: 'height:500px; width:auto' %><br><br>
+Type: <%= link_to @artwork.object_type.name, @artwork.object_type%><br>
+
+<% if @artwork.for_sale == true %>
+  Price: <%= number_to_currency(@artwork.price) %>
+<% end %>

@@ -11,10 +11,9 @@ class ObjectTypesController < ApplicationController
         @object_type = ObjectType.create(object_type_params)
         if @object_type.valid?
             redirect_to @object_type
-          else
+        else
             flash[:errors] = @object_type.errors.full_messages
             redirect_to new_object_type_path
-          end
         end
     end
 

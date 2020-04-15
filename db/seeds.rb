@@ -15,7 +15,7 @@ require 'byebug'
 require 'rest-client'
 require 'json'
 
-User.create(name: "greg")
+User.create(name: "greg", email: "greg@gmail.com")
 
 objects_array = [437133]
 
@@ -43,16 +43,19 @@ cats_obj_arr.each do |object|
             artist.bio = parsed_url["artistDisplayBio"]
         end
         
-        Artwork.create(
-        title: parsed_url["title"],
+        artwork = Artwork.create(
+        title: parsed_url["title"], #need to remove unneeded characters w/regex
         img_url: parsed_url["primaryImage"],
         artist: artist,
         price: rand(25000..10000000),
         user: User.all.sample,
         object_type: find_object(parsed_url["objectName"])
     )
+    
 
 
     
 
 end 
+
+puts Artwork.count

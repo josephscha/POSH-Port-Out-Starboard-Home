@@ -1,0 +1,10 @@
+<h1><%= @object_type.name %></h1>
+
+<ul>
+<% @object_type.artworks.each do |artwork| %>
+  <p> <%= link_to artwork.title, artwork %> <br><br>
+<img style='height:300px; width:auto;' src='<%=artwork.img_url%>'>
+  </p>
+<% end %>
+
+</ul>

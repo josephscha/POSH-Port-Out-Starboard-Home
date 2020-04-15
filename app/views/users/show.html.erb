@@ -1,0 +1,10 @@
+<h1> <%= @user.name.titleize %>'s Gallery </h1>
+<img src='<%=@user.img_url%>'><br>
+<%= @user.bio %><br>
+<% @user.artworks.each do |a| %><br>
+    <img src='<%=a.img_url %>' style='height:500px; width:auto;'><br><br>
+    <%= link_to a.title, a%><br>
+    <% if a.for_sale == true %>
+        <%= number_to_currency(@artwork.price) %><br><br>
+    <% end %>
+<% end %>

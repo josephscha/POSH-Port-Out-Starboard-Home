@@ -2,6 +2,13 @@ class ArtworksController < ApplicationController
   before_action :find_artwork, only: [:show, :edit, :update, :destroy]
   def index 
     @artworks = Artwork.all
+    @forsale = false 
+
+    if params[:forsale]
+      @forsale = true 
+      @forsale_artwork = Artwork.for_sale? 
+      render :index
+    end
   end
 
   def show
@@ -12,9 +19,10 @@ class ArtworksController < ApplicationController
   end
   
   def create
+    # byebug
     @artwork = Artwork.create(artwork_params)
     if @artwork.valid?
-      rediret_to @artwork
+      redirect_to @artwork
     else
       flash[:errors] = @artwork.errors.full_messages
       redirect_to new_artwork_path
@@ -25,7 +33,7 @@ class ArtworksController < ApplicationController
   end
 
   def update
-    if @artwork.update
+    if @artwork.update(artwork_params)
       redirect_to @artwork
     else
       flash[:errors] = @artwork.errors.full_messages
