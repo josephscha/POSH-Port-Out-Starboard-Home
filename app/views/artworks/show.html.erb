@@ -5,7 +5,9 @@ Artist: <%= link_to @artwork.artist.name, @artwork.artist %>
 <hr>
 <%= image_tag @artwork.img_url, style: 'height:500px; width:auto' %><br><br>
 <%= @artwork.likes.count %>
-<%= button_to "Like", likes_path%> 
+<%# <%= button_to "Like", likes_path, id: @artwork%>  %>
+<%# <%= link_to "Like", like_path, id: @artwork.id, method: "post"%> %>
+<%= link_to "Like", {:controller => "likes", :action => "create", :artwork => @artwork.id, method => "post" } %>
 Type: <%= link_to @artwork.object_type.name, @artwork.object_type%><br>
 
 <% if @artwork.for_sale == true %>
