@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-resources :artists, only: [:create, :show, :index]
+  resources :artists, only: [:create, :show, :index]
   resources :object_types, only: [:create, :show, :index]
   resources :artworks
   resources :users, except: :destroy

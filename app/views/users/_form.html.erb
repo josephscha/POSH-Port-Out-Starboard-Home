@@ -4,3 +4,25 @@
     <% end %>
 <% end %>
 
+<br>
+
+<%= form_for @user do |f| %>
+
+<%= f.label :name %>
+<%= f.text_field :name %><br>
+<br>
+<%= f.label :location %>
+<%= f.text_field :location %><br>
+<br>
+<%= f.label :email %>
+<%= f.text_field :email %><br>
+<br>
+<%= f.label :img_url %>
+<%= f.text_field :img_url%><br><br>
+
+<%= f.label :bio %>
+<%= f.text_area :bio%><br>
+<br>
+
+<%= f.submit %>
+<% end %>

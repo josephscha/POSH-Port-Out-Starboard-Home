@@ -1,31 +1,29 @@
 <h1>Artwork Index</h1>
 <ul>
    <% if @forsale_artwork %>
-        <%= button_to "All Artwork", artworks_path, method: :get %>
+      <%= button_to "All Artwork", artworks_path, method: :get %>
       <% @forsale_artwork.each do |artwork| %>
          <h2><%= artwork.title %></h2> <br>
          <img style='height:500px; width:auto;' src="<%=  artwork.img_url %>"> <br>
          <p>Type:<%= artwork.object_type.name %></p> <br>
          <p>Artist: <%= link_to artwork.artist.name, artwork.artist %> </p> <br>
          <p>Owned by: <%= artwork.user.name %></p> <br>
-         <% if artwork.for_sale == true %>
-            <p> Price : <%= artwork.price %></p> <br>
-         <% end %>
+         <p> Price: <%= number_to_currency(artwork.price) %></p> <br>
       <% end %>
-  <% else %>
+   <% else %>
 <%= button_to "Artworks on sale", artworks_path, method: :get, name: "forsale"%>
       <% @artworks.each do |artwork| %>
          <h2><%= artwork.title %></h2> <br>
          <img style='height:500px; width:auto;' src="<%=  artwork.img_url %>"> <br>
          <p>Type:<%= artwork.object_type.name %></p> <br>
          <p>Artist: <%= link_to artwork.artist.name, artwork.artist %> </p> <br>
-         <p>Owned by: <%= artwork.user.name %></p> <br>
+         <p>Owned by: <%= artwork.user.name.titleize %></p> <br>
          <% if artwork.for_sale == true %>
-            <p> Price : <%= artwork.price %></p> <br>
+            <p>Price: <%= number_to_currency(artwork.price) %></p> <br>
          <% end %>
       <% end %>
       
-  <% end %>
+   <% end %>
 
 </ul>
 

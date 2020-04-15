@@ -18,11 +18,11 @@ class UsersController < ApplicationController
   end
   
   def create
-    @user.create(user_params)
-    if @user.valid?
-      redirect_to @user
+    user = User.create(user_params)
+    if user.valid?
+      redirect_to user
     else
-      flash[:errors] = @user.errors.full_messages
+      flash[:errors] = user.errors.full_messages
       redirect_to new_user_path
     end
   end
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   end
   
   def update
-    if @user.update
+    if @user.update(user_params)
       redirect_to @user
     else
       flash[:errors] = @user.errors.full_messages
