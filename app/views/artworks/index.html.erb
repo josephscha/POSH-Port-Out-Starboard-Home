@@ -15,7 +15,7 @@
       <% @artworks.each do |artwork| %>
          <h2><%= link_to artwork.title, artwork %></h2> <br>
          <img style='height:500px; width:auto;' src="<%=  artwork.img_url %>"> <br>
-         <p>Type:<%= artwork.object_type.name %></p> <br>
+         <p>Type: <%= artwork.object_type.name %></p> <br>
          <p>Artist: <%= link_to artwork.artist.name, artwork.artist %> </p> <br>
          <p>Owned by: <%= artwork.user.name.titleize %></p> <br>
          <% if artwork.for_sale == true %>
@@ -27,4 +27,7 @@
 
 </ul>
 
-
+<%# creates image link but only with image_tag %>
+<%# link_to artwork  %>
+   <%# image_tag artwork.img_url %>
+<%# end %>
