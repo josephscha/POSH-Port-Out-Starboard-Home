@@ -1,9 +1,7 @@
 class UsersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update]
+  skip_before_action :authorized, only: [:new, :create]
 
-  def welcome
-
-  end
   
   def index
     # byebug
@@ -20,6 +18,7 @@ class UsersController < ApplicationController
   def create
     user = User.create(user_params)
     if user.valid?
+      session[:user_id] = user.id
       redirect_to user
     else
       flash[:errors] = user.errors.full_messages
@@ -44,7 +43,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :location, :img_url, :bio, :email)
+    params.require(:user).permit(:name, :location, :img_url, :bio, :email, :password)
   end
 
   def find_user

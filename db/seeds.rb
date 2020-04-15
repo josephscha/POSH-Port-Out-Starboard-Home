@@ -15,7 +15,7 @@ require 'byebug'
 require 'rest-client'
 require 'json'
 
-User.create(name: "greg", email: "greg@gmail.com")
+User.create(name: "greg", email: "greg@gmail.com", password_digest: "pass123")
 
 objects_array = [437133]
 
