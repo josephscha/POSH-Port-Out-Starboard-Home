@@ -7,5 +7,13 @@ class User < ApplicationRecord
   validates :name, :email, presence: true
   validates :email, uniqueness: true
   has_secure_password
+
+  def total_likes 
+    total = 0 
+    self.artworks.each do |a|
+      total +=  a.likes_count
+    end 
+    total 
+  end
 end
 

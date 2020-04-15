@@ -5,9 +5,11 @@
     <img src='<%=a.img_url %>' style='height:500px; width:auto;'><br><br>
     <%= link_to a.title, a%><br>
     <% if a.for_sale == true %>
-        <%= number_to_currency(@artwork.price) %><br><br>
+        <%= number_to_currency(a.price) %><br><br>
     <% end %>
 <% end %>
+
+Total Collection Likes: <%= @user.total_likes %>
 
 <%= link_to "Edit", edit_user_path, method: :get %><br>
 
