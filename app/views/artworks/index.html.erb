@@ -7,7 +7,7 @@
          <img src="<%= artwork.img_url %>" style='height:500px; width:auto;'> <br>
          <p>Type:<%= artwork.object_type.name %></p> <br>
          <p>Artist: <%= link_to artwork.artist.name, artwork.artist %> </p> <br>
-         <p>Owned by: <%= artwork.user.name %></p> <br>
+         <p>Owned by: <%= link_to artwork.user.name.titleize, artwork.user %></p> <br>
          <p> Price: <%= number_to_currency(artwork.price) %></p> <br>
       <% end %>
    <% else %>
@@ -17,7 +17,7 @@
          <img style='height:500px; width:auto;' src="<%=  artwork.img_url %>"> <br>
          <p>Type: <%= artwork.object_type.name %></p> <br>
          <p>Artist: <%= link_to artwork.artist.name, artwork.artist %> </p> <br>
-         <p>Owned by: <%= artwork.user.name.titleize %></p> <br>
+         <p>Owned by: <%= link_to artwork.user.name.titleize, artwork.user %></p> <br>
          <% if artwork.for_sale == true %>
             <p>Price: <%= number_to_currency(artwork.price) %></p> <br>
          <% end %>
