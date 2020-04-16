@@ -11,18 +11,22 @@
     <title>POSH Arts</title>
   </head>
   <body>
-       <ul>
-        <li><%= button_to 'Home Page', home_path, method: :get %>
-        <li><%= button_to 'Users Galleries', users_path, method: :get %></li>
-        <li><%= button_to 'Artwork Gallery', artworks_path, method: :get %></li>
-        <% if @current_user %>
-          <li><%= @current_user.name %></li>
-          <li><%= button_to "Log Out", sessions_path, method: :delete %></li>
-        <% else %>
-          <li><%= button_to 'Sign-up', new_user_path, method: :get %></li>
-          <li><%= button_to 'Sign-in', login_path, method: :get %></li>
-        <% end %>
-      </ul>
+  <div class="btn-group btn-group-toggle" data-toggle="buttons">
+      <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <ul class="navbar-nav">
+          <li class="nav-item btn"><%= button_to 'Home Page', home_path, method: :get %>
+          <li class="nav-item btn"><%= button_to 'Users Galleries', users_path, method: :get %></li>
+          <li class="nav-item btn"><%= button_to 'Artwork Gallery', artworks_path, method: :get %></li>
+          <% if @current_user %>
+            <li class="nav-item btn"><%= button_to "My Page", user_path(@current_user), method: :get %></li>
+            <li class="nav-item btn"><%= button_to "Log Out", sessions_path, method: :delete %></li>
+          <% else %>
+            <li class="nav-item btn"><%= button_to 'Sign-up', new_user_path, method: :get %></li>
+            <li class="nav-item btn"><%= button_to 'Sign-in', login_path, method: :get %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
     <%= yield %>
 
     <!-- Optional JavaScript -->
