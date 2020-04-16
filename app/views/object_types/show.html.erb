@@ -1,10 +1,19 @@
 <h1><%= @object_type.name %></h1>
 
 <ul>
-<% @object_type.artworks.each do |artwork| %>
-  <p> <%= link_to artwork.title, artwork %> <br><br>
-<img style='height:300px; width:auto;' src='<%=artwork.img_url%>'>
-  </p>
-<% end %>
-
+    <% if @forsale == true %>
+        <%= button_to "All Artwork", object_type_path, method: :get %> <br><br>
+        <% @forsale_artwork.each do |a| %><br>
+            <img src='<%=a.img_url %>' style='height:500px; width:auto;'><br><br>
+            Title: <%= link_to a.title, a%><br>
+            Price: <%= number_to_currency(a.price) %><br><br>
+            <% end %>
+    <% else %>
+        <%= button_to "View Artworks for Sale", object_type_path, method: :get, name: "forsale"%>
+        <% @object_type.artworks.each do |a| %><br>
+            <img src='<%=a.img_url %>' style='height:500px; width:auto;'><br><br>
+            Title: <%= link_to a.title, a%><br>
+            Price: <%= number_to_currency(a.price) %><br><br>
+            <% end %>
+    <% end %>
 </ul>

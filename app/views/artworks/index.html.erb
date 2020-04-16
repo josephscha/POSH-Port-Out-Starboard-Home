@@ -1,6 +1,6 @@
 <h1>Art Gallery</h1>
 <ul>
-   <% if @forsale_artwork %>
+   <% if @forsale == true %>
       <%= button_to "All Artwork", artworks_path, method: :get %> <br><br>
       <% @forsale_artwork.each do |artwork| %>
          <img src="<%= artwork.img_url %>" style='height:500px; width:auto;'> 

@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       @forsale = false 
       if params[:forsale]
         if @user.my_sale_artworks == true || @user.my_sale_artworks != []
-        @forsale_artwork = true
+        @forsale = true
         @forsale_artwork = @user.artworks.for_sale? 
       end
     end

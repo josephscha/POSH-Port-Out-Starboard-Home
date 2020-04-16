@@ -11,7 +11,7 @@ About me: <%= @user.bio %><br>
 <hr>
 
 <ul>
-    <% if @forsale_artwork %>
+    <% if @forsale == true %>
         <%= button_to "All Artwork", user_path, method: :get %> <br><br>
         <% @forsale_artwork.each do |a| %><br>
             <img src='<%=a.img_url %>' style='height:500px; width:auto;'><br><br>
