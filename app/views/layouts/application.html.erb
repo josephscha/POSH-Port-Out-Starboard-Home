@@ -13,11 +13,12 @@
   <body>
   <div class="btn-group btn-group-toggle" data-toggle="buttons">
       <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-    <li class="navbar-brand"><%= button_to 'POSH', home_path, method: :get %>
         <ul class="navbar-nav"></ul>
+          <li class="nav-item btn"><%= button_to 'POSH Home', home_path, method: :get %>
+          <li class="nav-item btn"><%= button_to 'Artists Gallery', artists_path, method: :get %></li>        
           <li class="nav-item btn"><%= button_to 'Users Galleries', users_path, method: :get %></li>
           <li class="nav-item btn"><%= button_to 'Artwork Gallery', artworks_path, method: :get %></li>
-          <li class="nav-item btn"><%= button_to 'Types of Art', object_types_path, method: :get %></li>
+          <li class="nav-item btn"><%= button_to 'Artwork Categories', object_types_path, method: :get %></li>
           <% if @current_user %>
             <li class="nav-item btn"><%= button_to "My Page", user_path(@current_user), method: :get %></li>
             <li class="nav-item btn"><%= button_to "Log Out", sessions_path, method: :delete %></li>

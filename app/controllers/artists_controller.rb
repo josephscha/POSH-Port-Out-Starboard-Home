@@ -6,8 +6,14 @@ class ArtistsController < ApplicationController
 
     def show
         @artist = Artist.find(params[:id])
-    end
+        @forsale = false 
 
+        if params[:forsale]
+          @forsale = true 
+          @forsale_artwork = @artist.artworks.for_sale? 
+        end
+    end
+ 
     def create 
         
         @artist = Artist.create(artist_params)

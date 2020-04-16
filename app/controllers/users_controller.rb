@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update]
-  skip_before_action :authorized, only: [:new, :create, :index]
+  skip_before_action :authorized, only: [:new, :create, :index, :show]
 
   
   def index
@@ -11,11 +11,9 @@ class UsersController < ApplicationController
   def show
       @forsale = false 
       if params[:forsale]
-        if @user.my_sale_artworks == true || @user.my_sale_artworks != []
         @forsale = true
         @forsale_artwork = @user.artworks.for_sale? 
       end
-    end
   end
 
   def new
