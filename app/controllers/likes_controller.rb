@@ -5,8 +5,13 @@ class LikesController < ApplicationController
         # art_id = params[:id]
         # Like.create(artwork_id: art_id, user: @current_user)
         # redirect_to artwork_path(art_id)
-        Like.create(user_id: @current_user.id, artwork_id: @artwork.id)
+        @liked = Like.create(user_id: @current_user.id, artwork_id: @artwork.id)
+        if @liked.valid? 
         redirect_to artwork_path(@artwork.id)
+        else
+          flash[:alert] = "You can only like an Artwork once!!!!!"
+          redirect_to @artwork
+        end
     end
 
     private

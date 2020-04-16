@@ -1,0 +1,7 @@
+<h1> Types of Artwork </h1>
+<ul>
+<% @object_types.each do |object_type| %>
+    <%= link_to object_type.name, object_type_path(object_type.id) %>
+    <%= object_type.description %> <br>
+<% end %>
+</ul>

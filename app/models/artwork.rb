@@ -31,7 +31,13 @@ class Artwork < ApplicationRecord
     self.save
   end
 
-
+  def artist_name=(name)
+    artist = Artist.find_or_create_by(name: name)
+  return self.artist_id = artist.id
+  end
   
+  def artist_name
+     self.artist ? self.artist.name : nil
+  end
   
 end

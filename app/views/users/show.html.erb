@@ -1,16 +1,30 @@
 <h1> <%= @user.name.titleize %>'s Gallery </h1>
-<img src='<%=@user.img_url%>'><br>
-<%= @user.bio %><br>
-<% @user.artworks.each do |a| %><br>
-    <img src='<%=a.img_url %>' style='height:500px; width:auto;'><br><br>
-    <%= link_to a.title, a%><br>
-    <% if a.for_sale == true %>
-        <%= number_to_currency(a.price) %><br><br>
-    <% end %>
+<% if @user == @current_user %>
+
+<%= link_to "Add Artwork", new_artwork_path %> <br>
+<%= link_to "Edit Account", edit_user_path, method: :get %><br>
 <% end %>
+<img src='<%=@user.img_url%>'><br>
+<h3>Collection Value: <%= number_to_currency(@user.current_gallery_value) %></h3>
+Total Collection Likes: <%= @user.total_likes %> <br>
+About me: <%= @user.bio %><br>
+<hr>
 
-Total Collection Likes: <%= @user.total_likes %>
+<ul>
+    <% if @forsale_artwork %>
+        <%= button_to "All Artwork", artworks_path, method: :get %> <br><br>
+        <% @user.artworks.each do |a| %><br>
+            <img src='<%=a.img_url %>' style='height:500px; width:auto;'><br><br>
+            Title: <%= link_to a.title, a%><br>
+            Price: <%= number_to_currency(a.price) %><br><br>
+            <% end %>
+    <% else %>
+        <%= button_to "View Artworks for Sale", artworks_path, method: :get, name: "forsale"%>
+        <% @user.artworks.each do |a| %><br>
+            <img src='<%=a.img_url %>' style='height:500px; width:auto;'><br><br>
+            Title: <%= link_to a.title, a%><br>
+            Price: <%= number_to_currency(a.price) %><br><br>
+            <% end %>
+    <% end %>
+</ul>
 
-<%= link_to "Edit User", edit_user_path, method: :get %><br>
-
-<%= link_to "Log Out", sessions_path, method: :delete %>

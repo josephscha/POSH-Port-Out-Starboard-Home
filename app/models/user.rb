@@ -21,5 +21,17 @@ class User < ApplicationRecord
       -user.total_likes
     end
   end
+
+  def current_gallery_value
+    total = 0
+    self.artworks.each do |artwork|
+      total += artwork.price
+    end
+    total
+  end
+
+  def total_artworks 
+    self.artworks.count
+  end
 end
 

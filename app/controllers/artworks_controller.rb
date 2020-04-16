@@ -53,7 +53,6 @@ class ArtworksController < ApplicationController
   def buyit
     #Whatever artwork .buy_artwork method (the user)
     # @artwork = Artwork.find_by(params[:artwork])
-    byebug
     @artwork = Artwork.find(params[:artwork_id])
     @artwork.buy_artwork(@current_user.id)
     redirect_to @current_user
@@ -63,7 +62,7 @@ class ArtworksController < ApplicationController
   
   def artwork_params
     # byebug
-    params.require(:artwork).permit(:title, :img_url, :price, :for_sale, :artist_id, :object_type_id, :user_id)
+    params.require(:artwork).permit(:title, :img_url, :price, :for_sale, :artist_id, :object_type_id, :user_id, :artist_name)
   end
 
 
