@@ -12,15 +12,15 @@
   </head>
   <body>
        <ul>
-        <li><%= link_to 'Home Page', home_path %>
-        <li><%= link_to 'Users Galleries', users_path %></li>
-        <li><%= link_to 'Artwork Gallery', artworks_path %></li>
+        <li><%= button_to 'Home Page', home_path, method: :get %>
+        <li><%= button_to 'Users Galleries', users_path, method: :get %></li>
+        <li><%= button_to 'Artwork Gallery', artworks_path, method: :get %></li>
         <% if @current_user %>
           <li><%= @current_user.name %></li>
           <li><%= button_to "Log Out", sessions_path, method: :delete %></li>
         <% else %>
-          <li><%= link_to 'Sign-up', new_user_path %></li>
-          <li><%= link_to 'Sign-in', login_path %></li>
+          <li><%= button_to 'Sign-up', new_user_path, method: :get %></li>
+          <li><%= button_to 'Sign-in', login_path, method: :get %></li>
         <% end %>
       </ul>
     <%= yield %>

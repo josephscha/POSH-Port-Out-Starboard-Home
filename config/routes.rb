@@ -7,9 +7,9 @@ Rails.application.routes.draw do
   resources :artworks
   patch '/artworks', to: 'artworks#buyit', as: "buy"
   get '/', to: 'sessions#welcome', as: 'home'
-  get "/sessions/login", to: 'sessions#new', as: "login"
   post '/sessions', to: 'sessions#create', as: 'sessions'
   delete '/sessions', to: 'sessions#destroy'
+  get "/sessions/login", to: 'sessions#new', as: "login"
   post '/likes', to: 'likes#create', as: 'like'
 
   # get '/sessions/login', to: 'sessions#new'
