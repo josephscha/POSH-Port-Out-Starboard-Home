@@ -21,8 +21,11 @@ class ArtworksController < ApplicationController
   end
   
   def create
-    # byebug
-    @artwork = Artwork.create(artwork_params)
+    @artist = Artist.find_or_create_by(name: params[:artwork][:artist])
+    new_params = artwork_params
+    new_params[:artist_id] = @artist.id
+    byebug
+    @artwork = Artwork.create(new_params)
     if @artwork.valid?
       redirect_to @artwork
     else
@@ -62,7 +65,7 @@ class ArtworksController < ApplicationController
   
   def artwork_params
     # byebug
-    params.require(:artwork).permit(:title, :img_url, :price, :for_sale, :artist_id, :object_type_id, :user_id, :artist_name)
+    params.require(:artwork).permit(:title, :img_url, :price, :for_sale, :object_type_id, :user_id)
   end
 
 
