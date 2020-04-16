@@ -4,7 +4,8 @@
 <ul>
     <% if @forsale == true %>
         <%= button_to "All Artwork", artist_path, method: :get %> <br>
-        <h2><%= "Artworks by #{@artist.name} up for sale!" %> </h2>
+        <h2><%= "#{@forsale_artwork.count} Artworks by #{@artist.name} up for sale! " %> </h2>
+        
         <% @forsale_artwork.each do |a| %><br>
             <img src='<%=a.img_url %>' style='height:500px; width:auto;'><br><br>
             Title: <%= link_to a.title, a%><br>

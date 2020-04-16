@@ -2,27 +2,28 @@
 <ul>
    <% if @forsale == true %>
       <%= button_to "All Artwork", artworks_path, method: :get %> <br><br>
+      <%= "#{@forsale_artwork.count} Artworks for sale!"  %> <br>
       <% @forsale_artwork.each do |artwork| %>
          <img src="<%= artwork.img_url %>" style='height:500px; width:auto;'> 
          <p>Title: <%= link_to artwork.title, artwork %></p> 
-         <p>Type: <%= artwork.object_type.name %></p> 
+         <p>Type: <%= link_to artwork.object_type.name, artwork.object_type %></p> 
          <p>Artist: <%= link_to artwork.artist.name, artwork.artist %> </p> 
          <p>Owned by: <%= link_to artwork.user.name.titleize, artwork.user %></p> 
          <p> Price: <%= number_to_currency(artwork.price) %></p> <br>
          <% end %>
    <% else %>
-<%= button_to "View Artworks for Sale", artworks_path, method: :get, name: "forsale"%>
+<%= button_to "View Artworks for Sale", artworks_path, method: :get, name: "forsale"%><br><br>
+      <h1><%= "#{@artworks.count} Artworks on display."  %></h1> <br>
       <% @artworks.each do |artwork| %>
-         <img style='height:500px; width:auto;' src="<%=  artwork.img_url %>"> <br>
-         <br>
+         <img style='height:500px; width:auto;' src="<%=  artwork.img_url %>"> 
+         <br><br>
          <p>Title: <%= link_to artwork.title, artwork %></p> 
-         <p>Type: <%= artwork.object_type.name %></p> 
+         <p>Type: <%= link_to artwork.object_type.name, artwork.object_type %></p> 
          <p>Artist: <%= link_to artwork.artist.name, artwork.artist %> </p> 
          <p>Owned by: <%= link_to artwork.user.name.titleize, artwork.user %></p> 
          <p>Price: <%= number_to_currency(artwork.price) %></p> 
          <br><br><br>
       <% end %>
-       
    <% end %>
 
 </ul>
