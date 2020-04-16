@@ -20,17 +20,22 @@
 <%= f.check_box :for_sale%><br><br>
 
 <%= f.label :artist %>
-<%= f.collection_select :artist_id, Artist.all, :id, :name%><br>
-<br>
+<%#= f.collection_select :artist_id, Artist.all, :id, :name, prompt: "Existing Artists"%>
+<%= f.text_field :artist, list: 'artists' %>
+    <datalist id="artists">
+   <% Artist.all.each do |a| %>
+      <option> <%= a.name %> </option>
+      <% end %>
+    </datalist>
 
-<%= f.label :user_id %>
-<%= f.collection_select :user_id, User.all, :id, :name, prompt: true%><br>
-<br>
+<%=  %><br>
+
+<%= f.hidden_field :user_id, value: @current_user.id %><br>
 
 <%= f.label :object_type_id %>
 <%= f.collection_select :object_type_id, ObjectType.all, :id, :name, prompt: true%><br>
 
-
+<br>
 
 <%#  change user to sessions %>
 <%= f.submit %>

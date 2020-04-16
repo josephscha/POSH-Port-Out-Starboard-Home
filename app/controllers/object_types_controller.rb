@@ -6,6 +6,12 @@ class ObjectTypesController < ApplicationController
 
     def show
         @object_type = ObjectType.find(params[:id])
+        @forsale = false 
+        # byebug
+        if params[:forsale]
+            @forsale = true 
+            @forsale_artwork = @object_type.artworks.for_sale?
+        end
     end
 
     def create 

@@ -3,9 +3,9 @@ class Artwork < ApplicationRecord
   belongs_to :object_type
   belongs_to :artist
   # validates :title, :img_url, :price, presence: true
-  has_many :likes 
+  has_many :likes , dependent: :destroy
   # has_many :users, through: :likes
-  
+
   def self.for_sale?
     self.all.select do |artwork|
       artwork.for_sale == true
@@ -31,7 +31,13 @@ class Artwork < ApplicationRecord
     self.save
   end
 
-
+  def artist_name=(name)
+    artist = Artist.find_or_create_by(name: name)
+  return self.artist_id = artist.id
+  end
   
+  def artist_name
+     self.artist ? self.artist.name : nil
+  end
   
 end

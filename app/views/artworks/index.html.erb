@@ -1,28 +1,28 @@
-<h1>Artwork Index</h1>
+<h1>Art Gallery</h1>
 <ul>
-   <% if @forsale_artwork %>
-      <%= button_to "All Artwork", artworks_path, method: :get %>
+   <% if @forsale == true %>
+      <%= button_to "All Artwork", artworks_path, method: :get %> <br><br>
       <% @forsale_artwork.each do |artwork| %>
-         <h2><%= link_to artwork.title, artwork %></h2> <br>
-         <img src="<%= artwork.img_url %>" style='height:500px; width:auto;'> <br>
-         <p>Type: <%= artwork.object_type.name %></p> <br>
-         <p>Artist: <%= link_to artwork.artist.name, artwork.artist %> </p> <br>
-         <p>Owned by: <%= link_to artwork.user.name.titleize, artwork.user %></p> <br>
+         <img src="<%= artwork.img_url %>" style='height:500px; width:auto;'> 
+         <p>Title: <%= link_to artwork.title, artwork %></p> 
+         <p>Type: <%= artwork.object_type.name %></p> 
+         <p>Artist: <%= link_to artwork.artist.name, artwork.artist %> </p> 
+         <p>Owned by: <%= link_to artwork.user.name.titleize, artwork.user %></p> 
          <p> Price: <%= number_to_currency(artwork.price) %></p> <br>
-      <% end %>
+         <% end %>
    <% else %>
 <%= button_to "View Artworks for Sale", artworks_path, method: :get, name: "forsale"%>
       <% @artworks.each do |artwork| %>
-         <h2><%= link_to artwork.title, artwork %></h2> <br>
          <img style='height:500px; width:auto;' src="<%=  artwork.img_url %>"> <br>
-         <p>Type: <%= artwork.object_type.name %></p> <br>
-         <p>Artist: <%= link_to artwork.artist.name, artwork.artist %> </p> <br>
-         <p>Owned by: <%= link_to artwork.user.name.titleize, artwork.user %></p> <br>
-         <% if artwork.for_sale == true %>
-            <p>Price: <%= number_to_currency(artwork.price) %></p> <br>
-         <% end %>
+         <br>
+         <p>Title: <%= link_to artwork.title, artwork %></p> 
+         <p>Type: <%= artwork.object_type.name %></p> 
+         <p>Artist: <%= link_to artwork.artist.name, artwork.artist %> </p> 
+         <p>Owned by: <%= link_to artwork.user.name.titleize, artwork.user %></p> 
+         <p>Price: <%= number_to_currency(artwork.price) %></p> 
+         <br><br><br>
       <% end %>
-      
+       
    <% end %>
 
 </ul>

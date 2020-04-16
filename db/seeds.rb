@@ -7,17 +7,22 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Artist.destroy_all
-Artwork.destroy_all
 ObjectType.destroy_all
 User.destroy_all
+Artwork.destroy_all
 
 require 'byebug'
 require 'rest-client'
 require 'json'
 
-User.create(name: "greg", email: "greg@gmail.com", password_digest: "pass123")
+#creating admin account to hold all artworks during seeds. pw: posh
+User.create(name: "POSH", email: "posh@gmail.com", location: "POSH HQ", bio: "The poshiest", img_url: "https://pbs.twimg.com/profile_images/589180553024430080/tZaEkx9F_400x400.jpg", password_digest: "$2a$12$G2f3yp1/.GHzmeR3dgwRrevAquO5b32PIhll3FogGwQF9lWNbr1UG")
 
-objects_array = [437133]
+object_name_arr = ["Sculpture", "Print", "Tapestry", "Oragami", "Digital", "Pottery", "Literature"]
+
+object_name_arr.each do |object|
+    ObjectType.create(name: object)
+end
 
 def find_artist(name)
     Artist.find_or_create_by(name: name)
