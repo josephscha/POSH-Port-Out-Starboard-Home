@@ -9,6 +9,13 @@ class UsersController < ApplicationController
   end
   
   def show
+      @forsale = false 
+      if params[:forsale]
+        if @user.my_sale_artworks == true || @user.my_sale_artworks != []
+        @forsale_artwork = true
+        @forsale_artwork = @user.artworks.for_sale? 
+      end
+    end
   end
 
   def new
@@ -16,6 +23,7 @@ class UsersController < ApplicationController
   end
   
   def create
+    # byebug
     user = User.create(user_params)
     if user.valid?
       session[:user_id] = user.id

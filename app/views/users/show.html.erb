@@ -12,14 +12,14 @@ About me: <%= @user.bio %><br>
 
 <ul>
     <% if @forsale_artwork %>
-        <%= button_to "All Artwork", artworks_path, method: :get %> <br><br>
-        <% @user.artworks.each do |a| %><br>
+        <%= button_to "All Artwork", user_path, method: :get %> <br><br>
+        <% @forsale_artwork.each do |a| %><br>
             <img src='<%=a.img_url %>' style='height:500px; width:auto;'><br><br>
             Title: <%= link_to a.title, a%><br>
             Price: <%= number_to_currency(a.price) %><br><br>
             <% end %>
     <% else %>
-        <%= button_to "View Artworks for Sale", artworks_path, method: :get, name: "forsale"%>
+        <%= button_to "View Artworks for Sale", user_path, method: :get, name: "forsale"%>
         <% @user.artworks.each do |a| %><br>
             <img src='<%=a.img_url %>' style='height:500px; width:auto;'><br><br>
             Title: <%= link_to a.title, a%><br>
