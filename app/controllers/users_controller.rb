@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   
   def index
     # byebug
-    @users = User.all
+    @users = User.best_first
   end
   
   def show

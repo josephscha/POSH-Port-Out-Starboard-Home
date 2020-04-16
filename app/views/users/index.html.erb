@@ -1,8 +1,10 @@
-<h1>index</h1>
+<h1>All Galleries</h1>
 <ul>
 <% @users.each do |user| %>
-  <li> <%= link_to user.name, user %></li><hr>
-  <li> <img style='height:500px; width:auto;' src= '<%= user.img_url %>'></li><hr>
+  <%= link_to user.name, user %><br>
+  <%# if user.artworks %>
+  <%# <img src='<%= user.artworks.sample.img_url %>
+  <%# <% end %> 
 <% end %>
 <br>
 </ul>

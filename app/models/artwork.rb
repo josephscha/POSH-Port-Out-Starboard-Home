@@ -21,7 +21,7 @@ class Artwork < ApplicationRecord
   # end
   def self.sort_artwork
     self.sort_by do |artwork|
-      artwork.likes.count
+      -artwork.likes.count
     end
   end
 

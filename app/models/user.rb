@@ -15,5 +15,11 @@ class User < ApplicationRecord
     end 
     total 
   end
+
+  def self.best_first
+    self.all.sort_by do |user|
+      -user.total_likes
+    end
+  end
 end
 
