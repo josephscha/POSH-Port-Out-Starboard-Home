@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-    skip_before_action :authorized, only: [:new, :create]
+    skip_before_action :authorized, only: [:new, :create, :welcome]
     skip_before_action :get_current_user, only: [:new]
     def new 
 
@@ -21,5 +21,9 @@ class SessionsController < ApplicationController
     #   byebug
         session.delete(:user_id)
         redirect_to login_path
+    end
+
+    def welcome
+        render :welcome
     end
 end
