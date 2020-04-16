@@ -21,5 +21,7 @@ class User < ApplicationRecord
       -user.total_likes
     end
   end
+
+ 
 end
 
