@@ -56,6 +56,14 @@ class ArtworksController < ApplicationController
     #Whatever artwork .buy_artwork method (the user)
     # @artwork = Artwork.find_by(params[:artwork])
     @artwork = Artwork.find(params[:artwork_id])
+    if @current_user.balance > @artwork.price 
+      funds = @current_user.balance
+      new_balance = funds - @artwork.price
+      @current_user.balance = new_balance
+      @current_user.save
+    else  
+      flash[:error] = "You do not have enough $$$"
+    end
     @artwork.buy_artwork(@current_user.id)
     redirect_to @current_user
   end
