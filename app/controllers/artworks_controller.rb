@@ -1,5 +1,5 @@
 class ArtworksController < ApplicationController
-  before_action :find_artwork, only: [:show, :edit, :update, :destroy]
+  before_action :find_artwork, only: [:show, :edit, :update, :destroy, :buy_it]
   skip_before_action :authorized, only: [:index, :show]
   
   def index 
@@ -50,11 +50,22 @@ class ArtworksController < ApplicationController
     redirect_to user_path(user)
   end
 
+  def buyit
+    #Whatever artwork .buy_artwork method (the user)
+    # @artwork = Artwork.find_by(params[:artwork])
+    byebug
+    @artwork = Artwork.find(params[:artwork_id])
+    @artwork.buy_artwork(@current_user.id)
+    redirect_to @current_user
+  end
+
   private
   
   def artwork_params
+    # byebug
     params.require(:artwork).permit(:title, :img_url, :price, :for_sale, :artist_id, :object_type_id, :user_id)
   end
+
 
   def find_artwork
     @artwork = Artwork.find(params[:id])

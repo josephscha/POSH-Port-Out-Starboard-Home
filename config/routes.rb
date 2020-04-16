@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :artists, only: [:create, :show, :index]
   resources :object_types, only: [:create, :show, :index]
   resources :artworks
+  patch '/artworks', to: 'artworks#buyit', as: "buy"
   resources :users, except: :destroy
   get "/sessions/login", to: 'sessions#new', as: "login"
   # get '/sessions/login', to: 'sessions#new'

@@ -26,3 +26,6 @@ Things you may want to cover:
 
 * ...
 # POSH-Port-Out-Starboard-Home
+
+#total likes to show pages
+#amount 

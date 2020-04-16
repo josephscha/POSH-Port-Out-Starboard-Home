@@ -25,4 +25,13 @@ class Artwork < ApplicationRecord
     end
   end
 
+  def buy_artwork(buyer_id) #changes ownership , gets buyer_id from sessions[:id]
+    #When user "buys" an artwork, the previous user_id associated with the artwork will be updated to the user_id of the buyer.
+    self.user_id = buyer_id 
+    self.save
+  end
+
+
+  
+  
 end

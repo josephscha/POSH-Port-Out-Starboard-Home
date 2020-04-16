@@ -1,7 +1,8 @@
 <%= button_to "Back to Artworks", artworks_path, method: :get%>
 <h1> <%= @artwork.title %> </h1>
 
-Artist: <%= link_to @artwork.artist.name, @artwork.artist %>
+Artist: <%= link_to @artwork.artist.name, @artwork.artist %><br>
+<%= @artwork.user.name %><br>
 <hr>
 <%= image_tag @artwork.img_url, style: 'height:500px; width:auto' %><br><br>
 <%= @artwork.likes_count %>
@@ -10,4 +11,8 @@ Type: <%= link_to @artwork.object_type.name, @artwork.object_type%><br>
 
 <% if @artwork.for_sale == true %>
   Price: <%= number_to_currency(@artwork.price) %>
+  <%# <%= button_to "Buy it now", {:controller => "artworks", :action => "buyit", :artwork => {:art => @artwork.id}} %> 
+  <%= button_to "Buy me", buy_path, method: "patch", params: {:artwork_id => @artwork.id}%>
 <% end %>
+
+
