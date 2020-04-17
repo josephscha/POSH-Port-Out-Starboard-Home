@@ -1,3 +1,5 @@
+
+<div class="makecenterpls"> 
 <% if flash[:errors] %>
   <% flash[:errors].each do |error|%>
     ERROR: <%= error %><br>
@@ -8,27 +10,28 @@
 
 <%= form_for @user do |f| %>
 
-<%= f.label :email %>
+<%= f.label "Email:" %>
 <%= f.text_field :email %><br>
 <br>
-<%= f.label :password %>
+<%= f.label "Password:" %>
 <%= f.text_field :password%><br>
 <br>
-<%= f.label :name %>
+<%= f.label "Name:" %>
 <%= f.text_field :name %><br>
 <br>
-<%= f.label :location %>
+<%= f.label "Location:" %>
 <%= f.text_field :location %><br>
 <br>
-<%= f.label :img_url %>
+<%= f.label "img_url:" %>
 <%= f.text_field :img_url%><br>
 <br>
-<%= f.label :balance %>
+<%= f.label "Balance:" %>
 <%= f.number_field :balance %><br>
 <br>
-<%= f.label :bio %>
+<%= f.label "Bio:" %>
 <%= f.text_area :bio%><br>
 <br>
 
 <%= f.submit %>
 <% end %>
+</div>

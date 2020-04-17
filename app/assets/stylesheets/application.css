@@ -20,8 +20,12 @@ h1 {
 }
 
 body {
-  font-family: Algerian;
+  font-family: Arial, Helvetica, sans-serif;
 }
+
+/* div {
+  align: right
+} */
 
 .menu-bar {
     width: 100%;
@@ -98,5 +102,55 @@ body {
   display: block;
 }
 
+.stayonpage {
+    position: fixed;
+    right: 0;
+    padding: 15px;
+}
+
+.login-box {
+  /* align: center; */
+  position: center;
+  padding: 350px;
+  border-color: black;
+  border-width: thin;
+}
 
 
+.makecenterpls {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    
+}
+
+.makecenterabove {
+    position: absolute;
+    top: 41%;
+    left: 47%;
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    
+}
+
+.makecenteredit {
+    position: absolute;
+    top: 18%;
+    left: 47%;
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.center-register {
+  position: absolute;
+  top: 22%;
+  left: 47%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}

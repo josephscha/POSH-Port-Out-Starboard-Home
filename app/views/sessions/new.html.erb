@@ -1,4 +1,5 @@
-<h1>Login</h1>
+<h1 class="makecenterabove">Login</h1>
+<div class="makecenterpls"> 
 
 <ol>
   <% if flash[:error] %>
@@ -7,12 +8,10 @@
 </ol>
 
 <%= form_for :session, url: sessions_path  do |f| %>
-  <%= f.label :email %>
+  <%= f.label "Email:" %>
   <%= f.text_field :email %>
-
-  <%= f.label :password %>
+  <%= f.label "Password:" %>
   <%= f.password_field :password %>
-
   <%= f.submit value: "Login" %>
 <% end %>
-
+</div>
