@@ -1,9 +1,10 @@
 <h1>All Galleries Sorted By Likes</h1>
 <ul>
-<% @users.each do |user| %>
+<% sorted_users = User.best_first %>
+<% sorted_users.each do |user| %>
   <%= link_to user.name, user %> <br>
   number of artworks in gallery: <%= user.total_artworks%><br>
-  Total likes: <%= user.likes.count %> <br><br><br>
+  Total likes: <%= user.total_likes %> <br><br><br>
   <%# if user.artworks %>
   <%# <img src='<%= user.artworks.sample.img_url %>
   <%# <% end %> 
