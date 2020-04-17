@@ -1,5 +1,7 @@
 
 <div class="makecenterpls"> 
+<body class="home">
+<div class="main1">
 <% if flash[:errors] %>
   <% flash[:errors].each do |error|%>
     ERROR: <%= error %><br>
@@ -34,4 +36,6 @@
 
 <%= f.submit %>
 <% end %>
+</div>
+<body>
 </div>

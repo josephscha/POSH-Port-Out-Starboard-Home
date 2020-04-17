@@ -1,3 +1,26 @@
 // Place all the styles related to the artworks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.blackbutton {
+	box-shadow:inset 0px 1px 0px 0px #000000;
+	background:linear-gradient(to bottom, #000000 5%, #000000 100%);
+	background-color:#000000;
+	border:1px solid #000000;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:20px;
+	padding:6px 12px;
+	text-decoration:none;
+}
+.blackbutton:hover {
+	background:#ffffff;
+    background-color:#ffffff;
+    color:#000000;
+}
+.blackbutton:active {
+	position:relative;
+	top:1px;
+}

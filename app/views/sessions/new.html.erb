@@ -1,17 +1,18 @@
-<h1 class="makecenterabove">Login</h1>
-<div class="makecenterpls"> 
+<html>
+  <body class="home">
+    <div class="main1"> 
+      <p class="sign1" align="center">Welcome to POSH</p>
+        <ol>
+          <% if flash[:error] %>
+            ERROR: <%= flash[:error] %>
+          <% end %>
+        </ol>
 
-<ol>
-  <% if flash[:error] %>
-    ERROR: <%= flash[:error] %>
-  <% end %>
-</ol>
-
-<%= form_for :session, url: sessions_path  do |f| %>
-  <%= f.label "Email:" %>
-  <%= f.text_field :email %>
-  <%= f.label "Password:" %>
-  <%= f.password_field :password %>
-  <%= f.submit value: "Login" %>
-<% end %>
-</div>
+        <%= form_for :session, url: sessions_path  do |f| %>
+        <%= f.text_field :email, :class => 'un1', placeholder: 'Email'%>
+        <%= f.password_field :password, :class => 'pass1', placeholder: 'Password' %>
+        <%= f.submit value: "LOGIN", :class => 'submit1' %>
+      <% end %>
+    </div>
+  </body>
+</html>

@@ -1,8 +1,9 @@
 <h1>Art Gallery</h1>
-<hr>
+
 <h2>
    <% if @forsale == true %>
-      <%= button_to "All Artwork", artworks_path, method: :get %> <br><br>
+      
+      <center><%= button_to "Click here to view all Artworks", artworks_path, method: :get, class:"blackbutton"%></center> <br><br>
       <h2><%= "#{@forsale_artwork.count} Artworks for Sale!"  %></h2>
       <% @forsale_artwork.each do |artwork| %>
          <img src="<%= artwork.img_url %>" style='height:500px; width:auto;'> 
@@ -13,7 +14,7 @@
          <p> Price: <%= number_to_currency(artwork.price) %></p> <br>
          <% end %>
    <% else %>
-<%= button_to "View Artworks for Sale", artworks_path, method: :get, name: "forsale"%><br>
+<center><%= button_to "Click here to view Artworks for Sale", artworks_path, method: :get, name: "forsale", class:"blackbutton"%></center><br>
       <h2><%= "#{@artworks.count} Artworks On Display"  %></h2>
       <% @artworks.each do |artwork| %>
          <img style='height:500px; width:auto;' src="<%=  artwork.img_url %>"> 
@@ -26,7 +27,7 @@
          <br><br><br>
       <% end %>
    <% end %>
-
+ 
 </h2>
 
 <%# creates image link but only with image_tag %>

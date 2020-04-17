@@ -1,2 +1,24 @@
-<h1 class="makecenteredit">EDIT USER PROFILE</h1>
-<%= render 'form' %>
+<div class="makecenterpls"> 
+    <body class="home">
+        <div class="main2">
+            <p class="sign1" align="center">EDIT PROFILE</p>
+                <% if flash[:errors] %>
+                    <% flash[:errors].each do |error|%>
+                    <%= error %><br>
+                <% end %>
+            <% end %>
+        <br>
+            <%= form_for @user do |f| %>
+
+                <%= f.text_field :email, :class => 'un1', placeholder: 'Email' %>
+                <%= f.text_field :password, :class => 'pass1', placeholder: 'Password'%>
+                <%= f.text_field :name, :class => 'un1', placeholder: 'Your Name' %>
+                <%= f.text_field :location, :class => 'un1', placeholder: 'Where are you from?' %>
+                <%= f.text_field :img_url, :class => 'un1', placeholder: 'Image URL'%>
+                <%= f.number_field :balance, :class => 'un1', placeholder: 'Deposit amount' %>
+                <%= f.text_area :bio, :class => 'un1', placeholder: 'About yourself'%>
+                <%= f.submit value: "REGISTER", :class => 'submit2'%>
+            <% end %>
+        </div>
+    <body>
+</div>
