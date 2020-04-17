@@ -1,7 +1,7 @@
 class ObjectTypesController < ApplicationController
     skip_before_action :authorized, only: [:index, :show, :create]
     def index 
-        @object_types = ObjectType.all
+        @object_types = ObjectType.name_sort
     end
 
     def show

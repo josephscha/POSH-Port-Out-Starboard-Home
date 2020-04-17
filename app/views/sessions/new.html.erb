@@ -4,9 +4,9 @@
     <div class="main1"> 
       <p class="sign1" align="center">Welcome to POSH</p>
         <ol>
-          <% if flash[:error] %>
+          <center><% if flash[:error] %>
             <%= flash[:error] %>
-          <% end %>
+          <% end %></center>
         </ol>
 
         <%= form_for :session, url: sessions_path  do |f| %>

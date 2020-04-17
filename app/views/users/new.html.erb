@@ -3,11 +3,11 @@
     <body class="home">
         <div class="main2">
             <p class="sign1" align="center">JOIN THE ELITE!</p>
-                <% if flash[:errors] %>
+                <center><% if flash[:errors] %>
                     <% flash[:errors].each do |error|%>
                     <%= error %><br>
                 <% end %>
-            <% end %>
+            <% end %></center>
         <br>
             <%= form_for @user do |f| %>
 
@@ -22,4 +22,4 @@
             <% end %>
         </div>
     <body>
-</div>
+</div> 

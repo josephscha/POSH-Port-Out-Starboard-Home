@@ -1,43 +1,44 @@
-<% if flash[:errors] %>
-  <% flash[:errors].each do |error|%>
-    ERROR: <%= error %><br>
-    <% end %>
-<% end %>
-<br>
-
+<div class="makecenterpls">
+<body class="home">
+  <div class="main2">
+    <p class="sign1" align="center">Add an Artwork!</p>
 <%= form_for @artwork do |f| %>
 
-<%= f.label :title %>
-<%= f.text_field :title %><br>
-<br>
-<%= f.label :img_url %>
-<%= f.text_field :img_url %><br>
-<br>
-<%= f.label :price %>
-<%= f.number_field :price %><br>
-<br>
-<%= f.label :for_sale %>
-<%= f.check_box :for_sale%><br><br>
 
-<%= f.label :artist %>
-<%#= f.collection_select :artist_id, Artist.all, :id, :name, prompt: "Existing Artists"%>
-<%= f.text_field :artist, list: 'artists' %>
+<%= f.text_field :title, :class => 'un1', placeholder: 'Title' %>
+<%= f.text_field :img_url, :class => 'un1', placeholder: 'Image URL'  %>
+<%= f.number_field :price, :class => 'un1',placeholder: 'Price'  %>
+<%= f.text_field :artist, list: 'artists', :class => 'un1',placeholder: 'Write or Select an Artist' %>
     <datalist id="artists">
    <% Artist.all.each do |a| %>
       <option> <%= a.name %> </option>
       <% end %>
     </datalist>
-
-<%=  %><br>
-
-<%= f.hidden_field :user_id, value: @current_user.id %><br>
-
-<%= f.label :object_type_id %>
-<%= f.collection_select :object_type_id, ObjectType.all, :id, :name, prompt: true%><br>
-
+<%= f.hidden_field :user_id, value: @current_user.id %><br> 
+<%= f.label "What type of artwork is this?" %>
+<%= f.collection_select :object_type_id, ObjectType.all, :id, :name, prompt: true, :class => 'un1' %><br>
+<br>
+<%= f.label "Put up for sale?" %>
+<%= f.check_box :for_sale%>
+<br>
 <br>
 
 <%#  change user to sessions %>
-<%= f.submit %>
+
+<%= f.submit value: "Add Artwork", :class =>'submit2' %>
 <% end %>
+</div>
+</body>
+</div>
+<div class="div-flash">
+<% if flash[:errors] %>
+  <% flash[:errors].each do |error|%>
+    <center>
+    ERROR: <%= error %><br>
+    </center>
+    <% end %>
+</div>
+<% end %>
+<br>
+
 

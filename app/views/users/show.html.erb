@@ -1,35 +1,57 @@
 <div class="stayonpage" >
- 
+<center> 
 <h2><%= @user.name.titleize %>'s Gallery</h2> <br>
 
-<img width=200px height=auto src='<%=@user.img_url%>'><br>
+<img width=200px height=auto src='<%=@user.img_url%>'><br> <br>
 <% if @user == @current_user %>
-<%= link_to "Add Artwork", new_artwork_path %> <br>
-<%= link_to "Edit Account", edit_user_path, method: :get %><br>
-Balance: <%= number_to_currency(@user.balance) %><br>
+<%= link_to "Add Artwork", new_artwork_path, :class => "styledlink"%> <br>
+<%= link_to "Edit Account", edit_user_path,:class => "styledlink" %><br>
+Current Balance: <%= number_to_currency(@user.balance) %><br>
 <% end %>
 <h3>Collection Value: <%= number_to_currency(@user.current_gallery_value) %></h3>
-Total Collection Likes: <%= @user.total_likes %> <br>
-About me: <%= @user.bio %><br>
+Total Collection Likes: <%= @user.total_likes %> <br> <br>
+About me: <%= @user.bio %><br> </center>
 </div>
 
 
-<ul>
-    <% if @forsale %>
-        <%= button_to "All Artwork", user_path, method: :get, class:"blackbutton" %> <br><br>
-        <% @forsale_artwork.each do |a| %><br>
-            <img src='<%=a.img_url %>' style='height:500px; width:auto;'><br><br>
-            Title: <%= link_to a.title, a%><br>
-            Price: <%= number_to_currency(a.price) %><br><br>
-            <% end %>
-    <% else %>
-        <%= button_to "View Artworks for Sale", user_path, method: :get, name: "forsale", class:"blackbutton"%><br><br>
-        <% @user.artworks.each do |a| %><br>
-            <img src='<%=a.img_url %>' style='height:500px; width:auto;'><br><br>
-            Title: <%= link_to a.title, a%><br>
-            Price: <%= number_to_currency(a.price) %><br><br>
-            <% end %>
-    <% end %>
-</ul>
+
+   <% if @forsale == true %>
+      <h2><%= "#{@forsale_artwork.count} Artworks for Sale!"  %></h2>
+      <%= button_to "Click here to view all of #{@user.name}'s owned Artworks", user_path, method: :get, class:"blackbutton"%></<br><br>
+      <br><br><br><br>
+ 
+      <div id="index-container2">
+      <% @forsale_artwork.each do |artwork| %>
+         <div class="index-tile" >
+         <img src="<%=  artwork.img_url %>"><br> 
+         <center><p>Artwork has - <%= pluralize(artwork.likes.count,"Like") %> </p></center>
+         <a class="styledlink", href=<%="/artworks/#{artwork.id}"%>>Title - <%=artwork.title%></a> <br>
+         <a class="styledlink", href=<%="/object_types/#{artwork.object_type.id}"%>>Category - <%=artwork.object_type.name%></a><br>     
+         <a class="styledlink", href=<%="/artists/#{artwork.artist.id}"%> >Artist - <%=artwork.artist.name%></a> <br>
+         <center> <p>Price: <%= number_to_currency(artwork.price) %></p> </center>
+         <br>
+         </div>
+         <% end %>
+         </div>
+        
+
+   <% else %>   
+
+      <h2><%= "#{@user.artworks.count} Artworks On Display"  %></h2>
+<%= button_to "Click here to view Artworks #{@user.name} has up for Sale", user_path, method: :get, name: "forsale", class:"blackbutton"%><br>
+     <br><br><br><br>
+<div id="index-container2">
+      <% @user.artworks.each do |artwork| %>
+      <div class="index-tile">
+         <img src="<%=  artwork.img_url %>"><br> 
+         <center><p>Artwork has - <%= pluralize(artwork.likes.count,"Like") %> </p></center>
+         <a class="styledlink", href=<%="/artworks/#{artwork.id}"%>>Title - <%=artwork.title%></a> <br>
+         <a class="styledlink", href=<%="/object_types/#{artwork.object_type.id}"%>>Category - <%=artwork.object_type.name%></a><br>     
+         <a class="styledlink", href=<%="/artists/#{artwork.artist.id}"%> >Artist - <%=artwork.artist.name%></a> <br>
+         <center> <p>Price: <%= number_to_currency(artwork.price) %></p> </center>
+         <br>
+         </div>
+      <% end %>
+   <% end %>
 
  

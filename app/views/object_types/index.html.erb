@@ -1,6 +1,7 @@
+<center>
 <h1>Artwork Types</h1>
-<ul>
+</center>
+
 <% @object_types.each do |object_type| %>
-    <li><%= link_to object_type.name, object_type_path(object_type.id) %></li>
+    <%= link_to "#{object_type.name} -  #{pluralize(object_type.artworks.count, "Artwork")}", object_type_path(object_type.id), :class => "styledlink2" %>
 <% end %>
-</ul>

@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
             session[:user_id] = user.id
             redirect_to user
         else 
-            flash[:error] = "Email & Password combination invalid. Please try again!"
+            flash[:error] = "Email & Password combination invalid."
             redirect_back fallback_location: new_user_path
         end
     end

@@ -15,17 +15,21 @@
  <li class="dropdown"><a href="#">Galleries</a>
   <ul class="dropdown-content">
    <li><a href="/artworks">Artwork Gallery</a></li>
+   <li><a href="/users">User Galleries</a></li>
    <li><a href="/artists">Artists</a></li>
    <li><a href="/object_types">Artwork Categories</a></li>
-   <li><a href="/users">User Galleries</a></li>
    </ul>
    </li>
   <% if @current_user %>
- <li style= "float:right;"><a data-method='delete', href="/sessions">LOG OUT</a></li>
- <li style= "float:right;"><a href=<%=%"/users/#{@current_user.id}"%>>PROFILE</a></li>
+<div class="staytopright">
+ <li><a href=<%=%"/users/#{@current_user.id}"%>>PROFILE</a></li>
+ <li><a data-method='delete', href="/sessions">LOG OUT</a></li>
+ </div>
   <% else  %>
+<div class="staytopright">
  <li style= "float:right;"><a href="/sessions/login">LOGIN</a></li>  
  <li style= "float:right;"><a href="/users/new">REGISTER</a></li>
+ </div>
  <% end %>
 </ul>
 <br> 

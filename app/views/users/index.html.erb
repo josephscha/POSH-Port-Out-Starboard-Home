@@ -1,15 +1,19 @@
 <h1>All Galleries Sorted By Likes</h1>
-<ul>
+
 <% sorted_users = User.best_first %>
+
+<div id="index-container">
 <% sorted_users.each do |user| %>
-  <%= link_to user.name, user %> <br>
-  number of artworks in gallery: <%= user.total_artworks%><br>
+<center>
+<div class="index-tile" >
+<img src="<%=user.img_url%>">
+  <%= link_to user.name, user, :class => "styledlink" %> <br>
+  number of artworks: <%= user.total_artworks%><br>
   Total likes: <%= user.total_likes %> <br><br><br>
-  <%# if user.artworks %>
-  <%# <img src='<%= user.artworks.sample.img_url %>
-  <%# <% end %> 
+  </div>
+  </center>
 <% end %>
 <br>
-</ul>
+</div>
 
 <%# add sessions for personal info %>

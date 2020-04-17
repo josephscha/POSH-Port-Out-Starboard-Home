@@ -1,19 +1,39 @@
 <h1><%= @object_type.name %></h1>
 
-<ul>
-    <% if @forsale == true %>
-        <%= button_to "All Artwork", object_type_path, method: :get, class:"blackbutton" %> <br><br>
-        <% @forsale_artwork.each do |a| %><br>
-            <img src='<%=a.img_url %>' style='height:500px; width:auto;'><br><br>
-            Title: <%= link_to a.title, a%><br>
-            Price: <%= number_to_currency(a.price) %><br><br>
-            <% end %>
-    <% else %>
-        <%= button_to "View Artworks for Sale", object_type_path, method: :get, name: "forsale", class:"blackbutton"%>
-        <% @object_type.artworks.each do |a| %><br>
-            <img src='<%=a.img_url %>' style='height:500px; width:auto;'><br><br>
-            Title: <%= link_to a.title, a%><br>
-            Price: <%= number_to_currency(a.price) %><br><br>
-            <% end %>
-    <% end %>
-</ul>
+<% if @forsale == true %>
+      <h2><%= "#{@forsale_artwork.count} Artworks for Sale!"  %></h2>
+      <%= button_to "Click here to view all Artworks", object_type_path, method: :get, class:"blackbutton"%></<br><br>
+      <br><br><br><br>
+
+      <div id="index-container">
+      <% @forsale_artwork.each do |artwork| %>
+         <div class="index-tile" >
+         <img src="<%=  artwork.img_url %>"><br> 
+         <center><p>Artwork has - <%= pluralize(artwork.likes.count,"Like") %> </p></center>
+         <a class="styledlink", href=<%="/artworks/#{artwork.id}"%>>Title - <%=artwork.title%></a> <br>
+         <a class="styledlink", href=<%="/artists/#{artwork.artist.id}"%> >Artist - <%=artwork.artist.name%></a> <br>
+         <a class="styledlink", href=<%="/users/#{artwork.user.id}"%> >Owner - <%=artwork.user.name%></a>  <br>
+         <center> <p>Price: <%= number_to_currency(artwork.price) %></p> </center>
+         <br>
+         </div>
+         <% end %>
+          </div>
+
+   <% else %>   
+
+      <h2><%= "#{@object_type.artworks.count} Artworks On Display"  %></h2>
+<%= button_to "Click here to view Artworks for Sale", object_type_path, method: :get, name: "forsale", class:"blackbutton"%><br>
+     <br><br><br><br>
+<div id="index-container">
+      <% @object_type.artworks.each do |artwork| %>
+      <div class="index-tile">
+         <img src="<%=  artwork.img_url %>"><br> 
+         <center><p>Artwork has - <%= pluralize(artwork.likes.count,"Like") %> </p></center>
+         <a class="styledlink", href=<%="/artworks/#{artwork.id}"%>>Title - <%=artwork.title%></a> <br>   
+         <a class="styledlink", href=<%="/artists/#{artwork.artist.id}"%> >Artist - <%=artwork.artist.name%></a> <br>
+         <a class="styledlink", href=<%="/users/#{artwork.user.id}"%> >Owner - <%=artwork.user.name%></a>  <br>
+         <center> <p>Price: <%= number_to_currency(artwork.price) %></p> </center>
+         <br>
+         </div>
+      <% end %>
+   <% end %>

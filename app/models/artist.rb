@@ -13,4 +13,9 @@ class Artist < ApplicationRecord
     self.try(:name)
   end
   
+  def self.name_sort
+    self.all.sort_by do |object|
+      object.name
+    end
+  end
 end

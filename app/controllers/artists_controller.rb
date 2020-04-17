@@ -1,7 +1,7 @@
 class ArtistsController < ApplicationController
     skip_before_action :authorized, only: [:index, :show, :create]
     def index 
-        @artists = Artist.all
+        @artists = Artist.name_sort
     end
 
     def show

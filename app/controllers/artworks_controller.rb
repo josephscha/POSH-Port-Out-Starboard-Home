@@ -48,7 +48,7 @@ class ArtworksController < ApplicationController
 # use cookies to determine if user owns artwork 
   def destroy
     @artwork = Artwork.find_by(id: params[:id])
-    @artwork.delete
+    @artwork.destroy
     redirect_to @current_user
   end
 
@@ -65,11 +65,13 @@ class ArtworksController < ApplicationController
       seller_new_balance = seller_balance + @artwork.price
       @artwork.user.balance = seller_new_balance
       @artwork.user.save
+      @artwork.buy_artwork(@current_user.id)
+      redirect_to @current_user
     else  
       flash[:error] = "You do not have enough $$$"
+      redirect_to @artwork
     end
-    @artwork.buy_artwork(@current_user.id)
-    redirect_to @current_user
+    
   end
 
 

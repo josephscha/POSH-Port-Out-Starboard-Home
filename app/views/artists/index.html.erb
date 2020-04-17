@@ -1,10 +1,9 @@
-<%#display artists %>
-<h1>Artist Index</h1>
 
-<ul>
+<center><h1>Artists Index</h1></center>
+
 
 <% @artists.each do |artist| %>
-  <li> <%= link_to artist.name, artist %>  </li>
+  <%= link_to "#{artist.name} - #{pluralize(artist.artworks.count, "Artwork")}", artist, :class => "styledlink2" %> 
 <% end %>
 
-</ul>
+
