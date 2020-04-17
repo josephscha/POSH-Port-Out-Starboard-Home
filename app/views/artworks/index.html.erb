@@ -12,8 +12,8 @@
          <p> Price: <%= number_to_currency(artwork.price) %></p> <br>
          <% end %>
    <% else %>
-<%= button_to "View Artworks for Sale", artworks_path, method: :get, name: "forsale"%><br><br>
-      <h1><%= "#{@artworks.count} Artworks on display."  %></h1> <br>
+<%= button_to "View Artworks for Sale", artworks_path, method: :get, name: "forsale"%><br>
+      <h1><%= "#{@artworks.count} Artworks On Display"  %></h1> <br>
       <% @artworks.each do |artwork| %>
          <img style='height:500px; width:auto;' src="<%=  artwork.img_url %>"> 
          <br><br>

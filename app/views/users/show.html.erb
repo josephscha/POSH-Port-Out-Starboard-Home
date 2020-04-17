@@ -6,6 +6,9 @@
 Balance: <%= number_to_currency(@user.balance) %><br>
 <% end %>
 <img src='<%=@user.img_url%>'><br>
+<% if @user == @current_user %>
+My Balance: <%= number_to_currency(@user.balance) %><br>
+<% end %>
 <h3>Collection Value: <%= number_to_currency(@user.current_gallery_value) %></h3>
 Total Collection Likes: <%= @user.total_likes %> <br>
 About me: <%= @user.bio %><br>

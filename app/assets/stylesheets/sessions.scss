@@ -3,3 +3,24 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 
+.home  {
+    padding: 25px;
+    background: url(https://i.etsystatic.com/13633360/r/il/410af6/2147945685/il_fullxfull.2147945685_7x02.jpg);
+    background-repeat: no-repeat;
+    background-size: 1450px auto;
+    
+  }
+
+  .homebutton:link, .homebutton:visited {
+    background-color: black;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  .homebutton:hover {
+    color: black;
+    background-color: white;
+  }

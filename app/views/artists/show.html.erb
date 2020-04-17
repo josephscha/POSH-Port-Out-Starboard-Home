@@ -1,6 +1,8 @@
+<br>
+<br>
 <%= button_to "Back to Artists", artists_path, method: :get%>
 <h1> <%= @artist.name %> </h1>
-<br><br><hr>
+<br><hr>
 <ul>
     <% if @forsale == true %>
         <%= button_to "All Artwork", artist_path, method: :get %> <br>

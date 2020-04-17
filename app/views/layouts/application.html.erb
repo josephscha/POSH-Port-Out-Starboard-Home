@@ -1,40 +1,37 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html></html>
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>POSH</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <title>POSH Arts</title>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body>
-  <div class="btn-group btn-group-toggle" data-toggle="buttons">
-      <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-        <ul class="navbar-nav"></ul>
-          <li class="nav-item btn"><%= button_to 'POSH Home', home_path, method: :get %>
-          <li class="nav-item btn"><%= button_to 'Artists', artists_path, method: :get %></li>        
-          <li class="nav-item btn"><%= button_to 'Users Galleries', users_path, method: :get %></li>
-          <li class="nav-item btn"><%= button_to 'Artwork Gallery', artworks_path, method: :get %></li>
-          <li class="nav-item btn"><%= button_to 'Artwork Categories', object_types_path, method: :get %></li>
-          <% if @current_user %>
-            <li class="nav-item btn"><%= button_to "My Page", user_path(@current_user), method: :get %></li>
-            <li class="nav-item btn"><%= button_to "Log Out", sessions_path, method: :delete %></li>
-          <% else %>
-            <li class="nav-item btn"><%= button_to 'Sign-up', new_user_path, method: :get %></li>
-            <li class="nav-item btn"><%= button_to 'Sign-in', login_path, method: :get %></li>
-          <% end %>
-        </ul>
-      </nav>
-    </div>
-    <%= yield %>
+  
+<body>
+<ul class="menu-bar">
+ <li class="active"><a href="/">POSH</a></li>
+ <li class="dropdown"><a href="#">Galleries</a>
+  <ul class="dropdown-content">
+   <li><a href="/users">User Galleries</a></li>
+   <li><a href="/artworks">Artwork Gallery</a></li>
+   <li><a href="/artists">Artists</a></li>
+   <li><a href="/object_types">Artwork Categories</a></li>
+   </ul>
+   </li>
+  <% if @current_user %>
+ <li style= "float:right;"><a data-method='delete', href="/sessions">LOG OUT</a></li>
+ <li style= "float:right;"><a href=<%=%"/users/#{@current_user.id}"%>>PROFILE</a></li>
+  <% else  %>
+ <li style= "float:right;"><a href="/sessions/login">LOGIN</a></li>  
+ <li style= "float:right;"><a href="/users/new">REGISTER</a></li>
+ <% end %>
+</ul>
+<br> 
+<br> 
+<br>
+<%= yield %>
+</body>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  </body>
 </html>
