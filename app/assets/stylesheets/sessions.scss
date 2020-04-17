@@ -3,3 +3,145 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 
+.home  {
+    padding: 25px;
+    background: url(https://i.etsystatic.com/13633360/r/il/410af6/2147945685/il_fullxfull.2147945685_7x02.jpg);
+    background-repeat: no-repeat;
+    background-size: 1450px auto;
+    
+  }
+
+  .homebutton:link, .homebutton:visited {
+    background-color: black;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  .homebutton:hover {
+    color: black;
+    background-color: white;
+  }
+
+  body {
+    background-color: #F3EBF6;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.main1 {
+    background-color: #FFFFFF;
+    width: 400px;
+    height: 300px;
+    margin: 14em auto;
+    border-radius: 1.5em;
+    box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+}
+
+.main2 {
+    background-color: #FFFFFF;
+    width: 400px;
+    height: 670px;
+    margin-top: 150px;
+    margin-bottom: 50px;
+    border-radius: 1.5em;
+    box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+}
+
+.sign1 {
+    padding-top: 40px;
+    color: black;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+    font-size: 23px;
+}
+
+.un1 {
+width: 76%;
+color: rgb(38, 50, 56);
+font-weight: 700;
+font-size: 14px;
+letter-spacing: 1px;
+background: rgba(136, 126, 126, 0.04);
+padding: 10px 20px;
+border: none;
+border-radius: 20px;
+outline: none;
+box-sizing: border-box;
+border: 2px solid rgba(0, 0, 0, 0.02);
+margin-bottom: 50px;
+margin-left: 46px;
+text-align: center;
+margin-bottom: 27px;
+font-family: 'Ubuntu', sans-serif;
+}
+
+
+.pass1 {
+        width: 76%;
+color: rgb(38, 50, 56);
+font-weight: 700;
+font-size: 14px;
+letter-spacing: 1px;
+background: rgba(136, 126, 126, 0.04);
+padding: 10px 20px;
+border: none;
+border-radius: 20px;
+outline: none;
+box-sizing: border-box;
+border: 2px solid rgba(0, 0, 0, 0.02);
+margin-bottom: 50px;
+margin-left: 46px;
+text-align: center;
+margin-bottom: 27px;
+font-family: 'Ubuntu', sans-serif;
+}
+
+
+.un1:focus, .pass:focus {
+    border: 2px solid rgba(0, 0, 0, 0.18) !important;
+    
+}
+
+.submit1 {
+  cursor: pointer;
+    border-radius: 1em;
+    color: #fff;
+    background: linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0));
+    border: 0;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-family: 'Ubuntu', sans-serif;
+    margin-left: 35%;
+    font-size: 13px;
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+}
+
+.submit2 {
+    cursor: pointer;
+      border-radius: 1em;
+      color: #fff;
+      background: linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0));
+      border: 0;
+      padding-left: 40px;
+      padding-right: 40px;
+      padding-bottom: 10px;
+      padding-top: 10px;
+      font-family: 'Ubuntu', sans-serif;
+      margin-left: 30%;
+      font-size: 13px;
+      box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+  }
+
+
+  .stayonbottomright {
+    position: fixed;
+    bottom: 0px;
+    right: 35px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+}

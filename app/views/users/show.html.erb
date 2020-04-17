@@ -1,14 +1,18 @@
-<h1> <%= @user.name.titleize %>'s Gallery </h1>
-<% if @user == @current_user %>
+<div class="stayonpage" >
+ 
+<h2><%= @user.name.titleize %>'s Gallery</h2> <br>
 
+<img width=200px height=auto src='<%=@user.img_url%>'><br>
+<% if @user == @current_user %>
 <%= link_to "Add Artwork", new_artwork_path %> <br>
 <%= link_to "Edit Account", edit_user_path, method: :get %><br>
+Balance: <%= number_to_currency(@user.balance) %><br>
 <% end %>
-<img src='<%=@user.img_url%>'><br>
 <h3>Collection Value: <%= number_to_currency(@user.current_gallery_value) %></h3>
 Total Collection Likes: <%= @user.total_likes %> <br>
 About me: <%= @user.bio %><br>
-<hr>
+</div>
+
 
 <ul>
     <% if @forsale %>

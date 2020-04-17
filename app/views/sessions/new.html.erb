@@ -1,18 +1,19 @@
-<h1>Login</h1>
+<html>
+<h2><a class="homebutton", href="/artworks">Start Browsing</a></h2>
+  <body class="home">
+    <div class="main1"> 
+      <p class="sign1" align="center">Welcome to POSH</p>
+        <ol>
+          <% if flash[:error] %>
+            <%= flash[:error] %>
+          <% end %>
+        </ol>
 
-<ol>
-  <% if flash[:error] %>
-    ERROR: <%= flash[:error] %>
-  <% end %>
-</ol>
-
-<%= form_for :session, url: sessions_path  do |f| %>
-  <%= f.label :email %>
-  <%= f.text_field :email %>
-
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.submit value: "Login" %>
-<% end %>
-
+        <%= form_for :session, url: sessions_path  do |f| %>
+        <%= f.text_field :email, :class => 'un1', placeholder: 'Email'%>
+        <%= f.password_field :password, :class => 'pass1', placeholder: 'Password' %>
+        <%= f.submit value: "LOGIN", :class => 'submit1' %>
+      <% end %>
+    </div>
+  </body>
+</html>

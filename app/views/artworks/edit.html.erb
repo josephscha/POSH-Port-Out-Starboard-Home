@@ -1,1 +1,25 @@
-<%= render 'form' %>
+<% if flash[:errors] %>
+  <% flash[:errors].each do |error|%>
+    ERROR: <%= error %><br>
+    <% end %>
+<% end %>
+<br>
+
+<%= form_for @artwork do |f| %>
+
+<%= f.label :img_url %>
+<%= f.text_field :img_url %><br>
+<br>
+<%= f.label :price %>
+<%= f.number_field :price %><br>
+<br>
+<%= f.label :for_sale %>
+<%= f.check_box :for_sale%><br><br>
+
+<br>
+
+<%#  change user to sessions %>
+<%= f.submit %>
+<% end %>
+
+<%= button_to "Remove Artwork", artwork_path, method: :delete %>

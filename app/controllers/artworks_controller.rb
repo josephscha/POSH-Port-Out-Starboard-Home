@@ -1,5 +1,5 @@
 class ArtworksController < ApplicationController
-  before_action :find_artwork, only: [:show, :edit, :update, :destroy, :buy_it]
+  before_action :find_artwork, only: [:show, :edit, :update, :buy_it]
   skip_before_action :authorized, only: [:index, :show]
   
   def index 
@@ -24,7 +24,6 @@ class ArtworksController < ApplicationController
     @artist = Artist.find_or_create_by(name: params[:artwork][:artist])
     new_params = artwork_params
     new_params[:artist_id] = @artist.id
-    byebug
     @artwork = Artwork.create(new_params)
     if @artwork.valid?
       redirect_to @artwork
@@ -48,18 +47,27 @@ class ArtworksController < ApplicationController
 # This destroy action is going to be called in user's show page. 
 # use cookies to determine if user owns artwork 
   def destroy
-    user = @artwork.user
-    @artwork.delete(artwork_params)
-    redirect_to user_path(user)
+    @artwork = Artwork.find_by(id: params[:id])
+    @artwork.delete
+    redirect_to @current_user
   end
 
   def buyit
     #Whatever artwork .buy_artwork method (the user)
     # @artwork = Artwork.find_by(params[:artwork])
     @artwork = Artwork.find(params[:artwork_id])
+    if @current_user.balance > @artwork.price 
+      funds = @current_user.balance
+      new_balance = funds - @artwork.price
+      @current_user.balance = new_balance
+      @current_user.save
+    else  
+      flash[:error] = "You do not have enough $$$"
+    end
     @artwork.buy_artwork(@current_user.id)
     redirect_to @current_user
   end
+
 
   private
   

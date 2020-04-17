@@ -1,31 +1,34 @@
 <h1>Art Gallery</h1>
-<ul>
+
+<h2>
    <% if @forsale == true %>
-      <%= button_to "All Artwork", artworks_path, method: :get %> <br><br>
+      
+      <center><%= button_to "Click here to view all Artworks", artworks_path, method: :get, class:"blackbutton"%></center> <br><br>
+      <h2><%= "#{@forsale_artwork.count} Artworks for Sale!"  %></h2>
       <% @forsale_artwork.each do |artwork| %>
          <img src="<%= artwork.img_url %>" style='height:500px; width:auto;'> 
          <p>Title: <%= link_to artwork.title, artwork %></p> 
-         <p>Type: <%= artwork.object_type.name %></p> 
+         <p>Type: <%= link_to artwork.object_type.name, artwork.object_type %></p> 
          <p>Artist: <%= link_to artwork.artist.name, artwork.artist %> </p> 
          <p>Owned by: <%= link_to artwork.user.name.titleize, artwork.user %></p> 
          <p> Price: <%= number_to_currency(artwork.price) %></p> <br>
          <% end %>
    <% else %>
-<%= button_to "View Artworks for Sale", artworks_path, method: :get, name: "forsale"%>
+<center><%= button_to "Click here to view Artworks for Sale", artworks_path, method: :get, name: "forsale", class:"blackbutton"%></center><br>
+      <h2><%= "#{@artworks.count} Artworks On Display"  %></h2>
       <% @artworks.each do |artwork| %>
-         <img style='height:500px; width:auto;' src="<%=  artwork.img_url %>"> <br>
-         <br>
+         <img style='height:500px; width:auto;' src="<%=  artwork.img_url %>"> 
+         <br><br>
          <p>Title: <%= link_to artwork.title, artwork %></p> 
-         <p>Type: <%= artwork.object_type.name %></p> 
+         <p>Type: <%= link_to artwork.object_type.name, artwork.object_type %></p> 
          <p>Artist: <%= link_to artwork.artist.name, artwork.artist %> </p> 
          <p>Owned by: <%= link_to artwork.user.name.titleize, artwork.user %></p> 
          <p>Price: <%= number_to_currency(artwork.price) %></p> 
          <br><br><br>
       <% end %>
-       
    <% end %>
-
-</ul>
+ 
+</h2>
 
 <%# creates image link but only with image_tag %>
 <%# link_to artwork  %>

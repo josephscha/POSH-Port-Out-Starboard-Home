@@ -57,3 +57,5 @@ gem "httparty"
 gem "nokogiri"
 gem "rest-client"
 gem "json"
+gem 'jquery-rails'
+gem 'bootstrap-sass'
