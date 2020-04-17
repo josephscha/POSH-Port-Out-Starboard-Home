@@ -16,6 +16,7 @@ ERROR: <%= flash[:error] %>
 
 <div class="div-indent">
 <h1><i>"<%= @artwork.title %>"</i> </h1>
+<br>
 <h3> Artist: <%= button_to @artwork.artist.name, @artwork.artist, method: :get, :class =>"button2"%></h3>
 <h3>Owned by: <%= button_to @artwork.user.name, @artwork.user, method: :get, :class =>"button2" %> </h3>
 <br>
