@@ -5,7 +5,7 @@
 <br><hr>
 <ul>
     <% if @forsale == true %>
-        <%= button_to "All Artwork", artist_path, method: :get %> <br>
+        <%= button_to "All Artwork", artist_path, method: :get, class:"blackbutton" %> <br> 
         <h2><%= "#{@forsale_artwork.count} Artworks by #{@artist.name} up for sale! " %> </h2>
         
         <% @forsale_artwork.each do |a| %><br>
@@ -14,7 +14,7 @@
             Price: <%= number_to_currency(a.price) %><br><br>
             <% end %>
     <% else %>
-        <%= button_to "View Artworks for Sale", artist_path, method: :get, name: "forsale"%> <br>
+        <%= button_to "View Artworks for Sale", artist_path, method: :get, name: "forsale", class:"blackbutton"%> <br>
         <h2><%= "All Artworks by #{@artist.name}!" %> </h2>
         <% @artist.artworks.each do |a| %><br>
             <img src='<%=a.img_url %>' style='height:500px; width:auto;'><br><br>
