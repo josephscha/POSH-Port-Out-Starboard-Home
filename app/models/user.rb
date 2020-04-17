@@ -14,7 +14,7 @@ class User < ApplicationRecord
     end
   end
 
-  def total_likes 
+  def total_likes #should create a count of likes for all users art
     total = 0 
     self.artworks.each do |a|
       total +=  a.likes_count
@@ -22,7 +22,7 @@ class User < ApplicationRecord
     total 
   end
 
-  def self.best_first
+  def self.best_first #to sort user index page, called in controller
     self.all.sort_by do |user|
       -user.total_likes
     end

@@ -1,20 +1,20 @@
 <h1>Art Gallery</h1>
-
-<h2>
+<div class="div-indent">
    <% if @forsale == true %>
       
-      <center><%= button_to "Click here to view all Artworks", artworks_path, method: :get, class:"blackbutton"%></center> <br><br>
+      <%= button_to "Click here to view all Artworks", artworks_path, method: :get, class:"blackbutton"%></<br><br>
       <h2><%= "#{@forsale_artwork.count} Artworks for Sale!"  %></h2>
-      <% @forsale_artwork.each do |artwork| %>
+      
+      <div><% @forsale_artwork.each do |artwork| %>
          <img src="<%= artwork.img_url %>" style='height:500px; width:auto;'> 
          <p>Title: <%= link_to artwork.title, artwork %></p> 
          <p>Type: <%= link_to artwork.object_type.name, artwork.object_type %></p> 
          <p>Artist: <%= link_to artwork.artist.name, artwork.artist %> </p> 
          <p>Owned by: <%= link_to artwork.user.name.titleize, artwork.user %></p> 
          <p> Price: <%= number_to_currency(artwork.price) %></p> <br>
-         <% end %>
+         <% end %></div>
    <% else %>
-<center><%= button_to "Click here to view Artworks for Sale", artworks_path, method: :get, name: "forsale", class:"blackbutton"%></center><br>
+<%= button_to "Click here to view Artworks for Sale", artworks_path, method: :get, name: "forsale", class:"blackbutton"%><br>
       <h2><%= "#{@artworks.count} Artworks On Display"  %></h2>
       <% @artworks.each do |artwork| %>
          <img style='height:500px; width:auto;' src="<%=  artwork.img_url %>"> 
@@ -27,9 +27,8 @@
          <br><br><br>
       <% end %>
    <% end %>
- 
-</h2>
 
+</div>
 <%# creates image link but only with image_tag %>
 <%# link_to artwork  %>
    <%# image_tag artwork.img_url %>

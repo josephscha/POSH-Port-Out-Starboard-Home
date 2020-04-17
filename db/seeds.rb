@@ -16,7 +16,7 @@ require 'rest-client'
 require 'json'
 
 #creating admin account to hold all artworks during seeds. pw: posh
-User.create(name: "POSH", email: "posh@gmail.com", location: "POSH HQ", bio: "The poshiest", img_url: "https://pbs.twimg.com/profile_images/589180553024430080/tZaEkx9F_400x400.jpg", password_digest: "$2a$12$G2f3yp1/.GHzmeR3dgwRrevAquO5b32PIhll3FogGwQF9lWNbr1UG")
+User.create(name: "POSH", email: "posh@gmail.com", location: "POSH HQ", bio: "The poshiest", img_url: "https://pbs.twimg.com/profile_images/589180553024430080/tZaEkx9F_400x400.jpg", password_digest: "$2a$12$G2f3yp1/.GHzmeR3dgwRrevAquO5b32PIhll3FogGwQF9lWNbr1UG", balance: 0)
 
 # object_name_arr = ["Sculpture", "Print", "Tapestry", "Origami", "Digital", "Pottery", "Literature","Painting"]
 

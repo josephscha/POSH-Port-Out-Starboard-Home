@@ -1,12 +1,13 @@
-<% if flash[:alert] %>
-<%= flash[:alert] %>
+<% if flash[:error] %>
+<%= flash[:error] %>
 <% end %>
-<%= button_to "Back to Artworks", artworks_path, method: :get%>
+<br><br>
+<%= button_to "View all Artworks", artworks_path, method: :get%>
 <h1> <%= @artwork.title %> </h1>
-
+<div class="div-indent">
 Artist: <%= link_to @artwork.artist.name, @artwork.artist %><br>
-<%= @artwork.user.name %><br>
-<hr>
+Owned by: <%= link_to @artwork.user.name, @artwork.user %><br>
+<br>
 <%= image_tag @artwork.img_url, style: 'height:500px; width:auto' %><br><br>
 People who like this piece: <%= @artwork.likes_count %>
 
@@ -25,5 +26,5 @@ Type: <%= link_to @artwork.object_type.name, @artwork.object_type%><br>
 <% if @current_user == @artwork.user %>
 <%= button_to "Edit Artwork", edit_artwork_path, method: :get%>
 <% end %>
-
-
+<br>
+</div>

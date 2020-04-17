@@ -23,7 +23,7 @@ About me: <%= @user.bio %><br>
             Price: <%= number_to_currency(a.price) %><br><br>
             <% end %>
     <% else %>
-        <%= button_to "View Artworks for Sale", user_path, method: :get, name: "forsale", class:"blackbutton"%>
+        <%= button_to "View Artworks for Sale", user_path, method: :get, name: "forsale", class:"blackbutton"%><br><br>
         <% @user.artworks.each do |a| %><br>
             <img src='<%=a.img_url %>' style='height:500px; width:auto;'><br><br>
             Title: <%= link_to a.title, a%><br>

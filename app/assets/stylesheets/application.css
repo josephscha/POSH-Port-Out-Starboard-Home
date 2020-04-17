@@ -14,18 +14,19 @@
  *= require_self
  */
 
-/* h1 { */
+h1 {
   /* margin: 40px; */
-  /* margin-left: 40px;
+  margin-left: 40px; 
 }
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-} */
+} 
 
-/* div {
-  align: right
-} */
+.div-indent {
+  margin-left: 40px; 
+  
+}
 
 .menu-bar {
     width: 100%;

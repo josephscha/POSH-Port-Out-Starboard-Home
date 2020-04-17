@@ -9,7 +9,7 @@ class LikesController < ApplicationController
         if @liked.valid? 
         redirect_to artwork_path(@artwork.id)
         else
-          flash[:alert] = "You can only like an Artwork once!!!!!"
+          flash[:error] = "You can only like an Artwork once!!!!!"
           redirect_to @artwork
         end
     end

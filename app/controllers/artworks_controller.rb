@@ -61,6 +61,10 @@ class ArtworksController < ApplicationController
       new_balance = funds - @artwork.price
       @current_user.balance = new_balance
       @current_user.save
+      seller_balance = @artwork.user.balance 
+      seller_new_balance = seller_balance + @artwork.price
+      @artwork.user.balance = seller_new_balance
+      @artwork.user.save
     else  
       flash[:error] = "You do not have enough $$$"
     end
