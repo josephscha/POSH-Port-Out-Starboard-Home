@@ -78,7 +78,6 @@ class ArtworksController < ApplicationController
   private
   
   def artwork_params
-    # byebug
     params.require(:artwork).permit(:title, :img_url, :image, :price, :for_sale, :object_type_id, :user_id)
   end
 
