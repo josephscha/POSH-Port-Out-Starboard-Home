@@ -8,7 +8,11 @@
       <div id="index-container">
       <% @forsale_artwork.each do |artwork| %>
          <div class="index-tile" >
-         <img src="<%=  artwork.img_url %>"><br> 
+         <% if artwork.image.attached? %>
+            <%= image_tag(artwork.image)%>
+         <% else %>
+            <img src="<%= artwork.img_url %>"><br> 
+         <% end %>  
          <center><p>Artwork has - <%= pluralize(artwork.likes.count,"Like") %> </p></center>
          <a class="styledlink", href=<%="/artworks/#{artwork.id}"%>>Title - <%=artwork.title%></a> <br>
          <a class="styledlink", href=<%="/artists/#{artwork.artist.id}"%> >Artist - <%=artwork.artist.name%></a> <br>
@@ -27,7 +31,11 @@
 <div id="index-container">
       <% @object_type.artworks.each do |artwork| %>
       <div class="index-tile">
-         <img src="<%=  artwork.img_url %>"><br> 
+         <% if artwork.image.attached? %>
+            <%= image_tag(artwork.image)%>
+         <% else %>
+            <img src="<%= artwork.img_url %>"><br> 
+         <% end %> 
          <center><p>Artwork has - <%= pluralize(artwork.likes.count,"Like") %> </p></center>
          <a class="styledlink", href=<%="/artworks/#{artwork.id}"%>>Title - <%=artwork.title%></a> <br>   
          <a class="styledlink", href=<%="/artists/#{artwork.artist.id}"%> >Artist - <%=artwork.artist.name%></a> <br>

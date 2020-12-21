@@ -20,7 +20,14 @@ ERROR: <%= flash[:error] %>
 <h3> Artist: <%= button_to @artwork.artist.name, @artwork.artist, method: :get, :class =>"button2"%></h3>
 <h3>Owned by: <%= button_to @artwork.user.name, @artwork.user, method: :get, :class =>"button2" %> </h3>
 <br>
-<%= image_tag @artwork.img_url, style: 'height:500px; width:auto' %><br>
+
+  <% if @artwork.image.attached? %>
+    <%= image_tag @artwork.image, style: 'height:500px; width:auto' %><br>
+  <% else %>
+    <%= image_tag @artwork.img_url, style: 'height:500px; width:auto' %><br>
+  <% end %>
+
+
 <h1> Likes count : <%= @artwork.likes_count %></h1> 
 
 <% if @current_user %>

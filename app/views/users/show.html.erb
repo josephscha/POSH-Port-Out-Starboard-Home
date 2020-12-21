@@ -11,7 +11,7 @@
 
          Current Balance: <%= number_to_currency(@user.balance) %><br>
       <% end %>
-      
+
       <h3>Collection Value: <%= number_to_currency(@user.current_gallery_value) %></h3>
       Total Collection Likes: <%= @user.total_likes %> <br> <br>
       About me: <%= @user.bio %><br> 
@@ -25,20 +25,23 @@
       <%= button_to "Click here to view all of #{@user.name}'s owned Artworks", user_path, method: :get, class:"blackbutton"%></<br><br>
       <br><br><br><br>
 
-      <div id="index-container2">
+   <div id="index-container2">
       <% @forsale_artwork.each do |artwork| %>
          <div class="index-tile" >
-         <img src="<%=  artwork.img_url %>"><br> 
-         <center><p>Artwork has - <%= pluralize(artwork.likes.count,"Like") %> </p></center>
-         <a class="styledlink", href=<%="/artworks/#{artwork.id}"%>>Title - <%=artwork.title%></a> <br>
-         <a class="styledlink", href=<%="/object_types/#{artwork.object_type.id}"%>>Category - <%=artwork.object_type.name%></a><br>     
-         <a class="styledlink", href=<%="/artists/#{artwork.artist.id}"%> >Artist - <%=artwork.artist.name%></a> <br>
-         <center> <p>Price: <%= number_to_currency(artwork.price) %></p> </center>
-         <br>
-      </div>
+            <% if artwork.image.attached? %>
+               <%= image_tag(artwork.image)%>
+            <% else %>
+               <img src="<%= artwork.img_url %>"><br> 
+            <% end %> 
+            <center><p>Artwork has - <%= pluralize(artwork.likes.count,"Like") %> </p></center>
+            <a class="styledlink", href=<%="/artworks/#{artwork.id}"%>>Title - <%=artwork.title%></a> <br>
+            <a class="styledlink", href=<%="/object_types/#{artwork.object_type.id}"%>>Category - <%=artwork.object_type.name%></a><br>     
+            <a class="styledlink", href=<%="/artists/#{artwork.artist.id}"%> >Artist - <%=artwork.artist.name%></a> <br>
+            <center> <p>Price: <%= number_to_currency(artwork.price) %></p> </center>
+            <br>
+         </div>
       <% end %>
    </div>
-
 
    <% else %>   
 
@@ -48,15 +51,21 @@
       
       <div id="index-container2">
          <% @user.artworks.each do |artwork| %>
-         <div class="index-tile">
-            <img src="<%=  artwork.img_url %>"><br> 
-            <center><p>Artwork has - <%= pluralize(artwork.likes.count,"Like") %> </p></center>
-            <a class="styledlink", href=<%="/artworks/#{artwork.id}"%>>Title - <%=artwork.title%></a> <br>
-            <a class="styledlink", href=<%="/object_types/#{artwork.object_type.id}"%>>Category - <%=artwork.object_type.name%></a><br>     
-            <a class="styledlink", href=<%="/artists/#{artwork.artist.id}"%> >Artist - <%=artwork.artist.name%></a> <br>
-            <center> <p>Price: <%= number_to_currency(artwork.price) %></p> </center>
-            <br>
-         </div>
+            <div class="index-tile">
+                  <% if artwork.image.attached? %>
+                     <%= image_tag(artwork.image)%>
+                  <% else %>
+                     <img src="<%=  artwork.img_url %>"><br> 
+                  <% end %>
+               <center>
+                  <p>Artwork has - <%= pluralize(artwork.likes.count,"Like") %> </p>
+               </center>
+               <a class="styledlink", href=<%="/artworks/#{artwork.id}"%>>Title - <%=artwork.title%></a> <br>
+               <a class="styledlink", href=<%="/object_types/#{artwork.object_type.id}"%>>Category - <%=artwork.object_type.name%></a><br>     
+               <a class="styledlink", href=<%="/artists/#{artwork.artist.id}"%> >Artist - <%=artwork.artist.name%></a> <br>
+               <center> <p>Price: <%= number_to_currency(artwork.price) %></p> </center>
+               <br>
+            </div>
          <% end %>
    <% end %>
 
