@@ -29,7 +29,7 @@ class ArtworksController < ApplicationController
       redirect_to @artwork
     else
       flash[:errors] = @artwork.errors.full_messages
-      redirect_to new_artwork_path
+      redirect_to new_artwork_path # go back to add artwork form
     end
   end
 
