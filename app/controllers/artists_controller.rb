@@ -9,11 +9,11 @@ class ArtistsController < ApplicationController
         @forsale = false 
 
         if params[:forsale]
-          @forsale = true 
-          @forsale_artwork = @artist.artworks.for_sale? 
+            @forsale = true 
+            @forsale_artwork = @artist.artworks.for_sale? 
         end
     end
- 
+
     def create 
         
         @artist = Artist.create(artist_params)

@@ -1,17 +1,13 @@
 class LikesController < ApplicationController
   before_action :find_artwork
     def create
-      # byebug
-        # art_id = params[:id]
-        # Like.create(artwork_id: art_id, user: @current_user)
-        # redirect_to artwork_path(art_id)
-        @liked = Like.create(user_id: @current_user.id, artwork_id: @artwork.id)
-        if @liked.valid? 
+      @liked = Like.create(user_id: @current_user.id, artwork_id: @artwork.id)
+      if @liked.valid? 
         redirect_to artwork_path(@artwork.id)
-        else
-          flash[:error] = "You can only like an Artwork once!!!!!"
-          redirect_to @artwork
-        end
+      else
+        flash[:error] = "You can only like an Artwork once!!!!!"
+        redirect_to @artwork
+      end
     end
 
     private
@@ -21,6 +17,6 @@ class LikesController < ApplicationController
     end
 
     def like_params
-        params.require(:like).permit(:user_id, :artwork_id)
+      params.require(:like).permit(:user_id, :artwork_id)
     end
 end

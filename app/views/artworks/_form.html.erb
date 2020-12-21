@@ -10,7 +10,7 @@
 <%= f.number_field :price, :class => 'un1',placeholder: 'Price'  %>
 <%= f.text_field :artist, list: 'artists', :class => 'un1',placeholder: 'Write or Select an Artist' %>
     <datalist id="artists">
-   <% Artist.all.each do |a| %>
+  <% Artist.all.each do |a| %>
       <option> <%= a.name %> </option>
       <% end %>
     </datalist>

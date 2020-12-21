@@ -33,7 +33,7 @@ class Artwork < ApplicationRecord
 
   def artist_name=(name)
     artist = Artist.find_or_create_by(name: name)
-  return self.artist_id = artist.id
+    return self.artist_id = artist.id
   end
   
   def artist_name
