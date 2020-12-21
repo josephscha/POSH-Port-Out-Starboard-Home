@@ -10,6 +10,7 @@
          <div class="index-tile" >
          <img src="<%=  artwork.img_url %>"><br> 
          <center><p>Artwork has - <%= pluralize(artwork.likes.count,"Like") %> </p></center>
+
          <a class="styledlink", href=<%="/artworks/#{artwork.id}"%>>Title - <%=artwork.title%></a> <br>
          <a class="styledlink", href=<%="/object_types/#{artwork.object_type.id}"%>>Category - <%=artwork.object_type.name%></a><br>     
          <a class="styledlink", href=<%="/artists/#{artwork.artist.id}"%> >Artist - <%=artwork.artist.name%></a> <br>

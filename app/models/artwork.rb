@@ -3,6 +3,7 @@ class Artwork < ApplicationRecord
   belongs_to :object_type
   belongs_to :artist
   has_many :likes , dependent: :destroy
+  has_one_attached :image
   # validates :title, :img_url, :price, presence: true
   # has_many :users, through: :likes
 

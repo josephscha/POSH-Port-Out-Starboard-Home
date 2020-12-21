@@ -3,11 +3,14 @@
   <div class="main2">
     <p class="sign1" align="center">Add an Artwork!</p>
 <%= form_for @artwork do |f| %>
-
-
 <%= f.text_field :title, :class => 'un1', placeholder: 'Title' %>
 <%= f.text_field :img_url, :class => 'un1', placeholder: 'Image URL'  %>
+<%# new new new new remove this line new new new new %>
+<%= f.file_field :image, :class => 'un1', placeholder: 'Add Image' %> 
+<%# new new new new remove this line new new new new %>
+
 <%= f.number_field :price, :class => 'un1',placeholder: 'Price'  %>
+
 <%= f.text_field :artist, list: 'artists', :class => 'un1',placeholder: 'Write or Select an Artist' %>
     <datalist id="artists">
   <% Artist.all.each do |a| %>
