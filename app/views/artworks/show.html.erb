@@ -4,46 +4,43 @@
 <%= button_to "View all Artworks", artworks_path, method: :get, :class => "button1"%><br><br>
 
 <div class="div-flash-like">
-<br>
-<% if flash[:error] %>
-ERROR: <%= flash[:error] %>
-<% end %>
-<br>
+  <br>
+  <% if flash[:error] %>
+  ERROR: <%= flash[:error] %>
+  <% end %>
+  <br>
 </div>
-<%# <div>
-<br><br><br>
-</div> %>
 
 <div class="div-indent">
-<h1><i>"<%= @artwork.title %>"</i> </h1>
-<br>
-<h3> Artist: <%= button_to @artwork.artist.name, @artwork.artist, method: :get, :class =>"button2"%></h3>
-<h3>Owned by: <%= button_to @artwork.user.name, @artwork.user, method: :get, :class =>"button2" %> </h3>
-<br>
+  <h1><i>"<%= @artwork.title %>"</i> </h1>
+  <br>
+  <h3> Artist: <%= button_to @artwork.artist.name, @artwork.artist, method: :get, :class =>"button2"%></h3>
+  <h3>Owned by: <%= button_to @artwork.user.name, @artwork.user, method: :get, :class =>"button2" %> </h3>
+  <br>
 
-  <% if @artwork.image.attached? %>
-    <%= image_tag @artwork.image, style: 'height:500px; width:auto' %><br>
-  <% else %>
-    <%= image_tag @artwork.img_url, style: 'height:500px; width:auto' %><br>
+    <% if @artwork.image.attached? %>
+      <%= image_tag @artwork.image, style: 'height:500px; width:auto' %><br>
+    <% else %>
+      <%= image_tag @artwork.img_url, style: 'height:500px; width:auto' %><br>
+    <% end %>
+
+
+  <h1> Likes count : <%= @artwork.likes_count %></h1> 
+
+  <% if @current_user %>
+    <%= button_to "Like This Artwork", {:controller => "likes", :action => "create", :artwork => @artwork.id}, :class =>"button2" %> <br>
+    <%= button_to "See all #{@artwork.object_type.name}s", @artwork.object_type, method: :get, :class =>"button2"%><br>
+      <h1> Price: <%= number_to_currency(@artwork.price) %> </h1>
+
+    <% if @artwork.for_sale == true && @current_user != @artwork.user %>
+      <%# <%= button_to "Buy it now", {:controller => "artworks", :action => "buyit", :artwork => {:art => @artwork.id}} %> 
+      <%= button_to "Buy me", buy_path, method: "patch", params: {:artwork_id => @artwork.id}, :class =>"button2"%>
+    <% end %>
+
   <% end %>
 
-
-<h1> Likes count : <%= @artwork.likes_count %></h1> 
-
-<% if @current_user %>
-<%= button_to "Like This Artwork", {:controller => "likes", :action => "create", :artwork => @artwork.id}, :class =>"button2" %> <br>
-<%= button_to "See all #{@artwork.object_type.name}s", @artwork.object_type, method: :get, :class =>"button2"%><br>
-  <h1> Price: <%= number_to_currency(@artwork.price) %> </h1>
-
-<% if @artwork.for_sale == true && @current_user != @artwork.user %>
-  <%# <%= button_to "Buy it now", {:controller => "artworks", :action => "buyit", :artwork => {:art => @artwork.id}} %> 
-  <%= button_to "Buy me", buy_path, method: "patch", params: {:artwork_id => @artwork.id}, :class =>"button2"%>
-<% end %>
-
-<% end %>
-
-<% if @current_user == @artwork.user %>
-<%= button_to "Edit Artwork", edit_artwork_path, method: :get, :class =>"button2"%>
-<% end %>
-<br>
+  <% if @current_user == @artwork.user %>
+    <%= button_to "Edit Artwork", edit_artwork_path, method: :get, :class =>"button2"%>
+  <% end %>
+  <br>
 </div>

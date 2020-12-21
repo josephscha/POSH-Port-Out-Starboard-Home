@@ -1,31 +1,28 @@
 <div class="makecenterpls">
 <body class="home">
-<div class="main2">
-<p class="sign1" align="center">Edit Artwork!</p>
-<%= form_for @artwork do |f| %>
-<%= f.text_field :img_url, :class =>'un1' %>
-<%= f.number_field :price, :class =>'un1'%>
-<br>
-<center><%= f.label "Tick if Art is for sale" %></center> 
-<center> <%= f.check_box :for_sale %></center><br><br>
-
-
-<%#  change user to sessions %>
-<%= f.submit value:"Confirm Changes", :class =>'submit2' %>
-<% end %>
-<br>
-<center><%= button_to "Remove Artwork", artwork_path, method: :delete, :class =>"button2" %></center>
-</center>
-</div>
+  <div class="main2">
+  <p class="sign1" align="center">Edit Artwork!</p>
+  <%= form_for @artwork do |f| %>
+    <%= f.text_field :img_url, :class =>'un1' %>
+    <%= f.number_field :price, :class =>'un1'%>
+    <br>
+    <center><%= f.label "Tick if Art is for sale" %></center> 
+    <center> <%= f.check_box :for_sale %></center><br><br>
+    <%= f.submit value:"Confirm Changes", :class =>'submit2' %>
+    <% end %>
+  <br>
+  <center><%= button_to "Remove Artwork", artwork_path, method: :delete, :class =>"button2" %></center>
+  </center>
+  </div>
 </body>
 </div>
 
-<div class="div-flash">
-<% if flash[:errors] %>
-  <% flash[:errors].each do |error|%>
-    <center>
-    ERROR: <%= error %><br>
-    </center>
-    <% end %>
-</div>
+  <div class="div-flash">
+  <% if flash[:errors] %>
+    <% flash[:errors].each do |error|%>
+      <center>
+      ERROR: <%= error %><br>
+      </center>
+      <% end %>
+  </div>
 <% end %>
